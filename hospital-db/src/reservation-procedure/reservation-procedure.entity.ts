@@ -1,5 +1,6 @@
-import { BaseEntity, PrimaryColumn } from 'typeorm';
+import { BaseEntity, PrimaryColumn, Entity } from 'typeorm';
 
+@Entity()
 export class ReservationProcedures extends BaseEntity {
   
   /**

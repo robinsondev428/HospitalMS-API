@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { RoomModule } from './room/room.module';
 import { BedsModule } from './beds/beds.module';
 import { StaffModule } from './staff/staff.module';
-import { typeOrmConfig } from '../config/typeorm.config';
+import { typeOrmConfig } from './config/typeorm.config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { MedicalEquipmentModule } from './medical-equipment/medical-equipment.module';
 import { MedicalProcedureModule } from './medical-procedure/medical-procedure.module';

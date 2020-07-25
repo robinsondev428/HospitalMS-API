@@ -7,12 +7,13 @@ export class Treatment extends BaseEntity {
    * Id of the record
    */
   @PrimaryColumn({ length: 36 })
-  @ManyToOne(
-    type => ClinicalRecord,
-    record => record.RecordID,
-    { eager: false },
-  )
   RecordId: string;
+  // @ManyToOne(
+  //   type => ClinicalRecord,
+  //   record => record.RecordID,
+  //   { eager: false },
+  // )
+  
 
   /**
    * Name of the treatment
