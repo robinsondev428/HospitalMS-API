@@ -13,6 +13,7 @@ import { ReservationModule } from './reservation/reservation.module';
 import { AddressModule } from './address/address.module';
 import { TreatmentModule } from './treatment/treatment.module';
 import { ReservationProcedureModule } from './reservation-procedure/reservation-procedure.module';
+import { EquimentBedModule } from './equiment-bed/equiment-bed.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { ReservationProcedureModule } from './reservation-procedure/reservation-
     AddressModule,
     TreatmentModule,
     ReservationProcedureModule,
+    EquimentBedModule,
     ],
   controllers: [],
   providers: [],

@@ -1,5 +1,6 @@
 import { BaseEntity, PrimaryColumn, Column, OneToMany, Entity } from 'typeorm';
 import { Patient } from 'src/patient/patient.entity';
+import { MedicalProcedure } from 'src/medical-procedure/medical-procedure.entity';
 @Entity()
 export class ClinicalRecord extends BaseEntity {
 
@@ -19,11 +20,20 @@ export class ClinicalRecord extends BaseEntity {
    * Procedure performed on the patient.
    */
   @Column({length:36})
+  @OneToMany(
+    type => MedicalProcedure,
+    procedure => procedure.Id,
+    {eager: false}
+  )
   ProcedureID: string;
 
   /**
    * Patient's Dni.
    */
   @Column({length:11})
+  @OneToMany(
+    type => Patient,
+    patient => patient.PatientDni,
+    { eager: false },)
   PatientDni: string;
 }

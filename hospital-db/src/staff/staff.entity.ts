@@ -1,5 +1,7 @@
-import { BaseEntity, Entity, PrimaryColumn, Column } from 'typeorm';
+import { BaseEntity, Entity, PrimaryColumn, Column, OneToOne } from 'typeorm';
 import { IRoleType } from  './type-role.enum';
+import { type } from 'os';
+import { Address } from 'src/address/address.entity';
 
 @Entity()
 export class Staff extends BaseEntity {
@@ -50,6 +52,10 @@ export class Staff extends BaseEntity {
    * Postal Code.
    */
   @Column({length:5})
+  @OneToOne(
+    type => Address,
+    address => address.CP
+  )
   CP: string;
   
   /**

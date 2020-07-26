@@ -1,5 +1,7 @@
-import { BaseEntity, Entity, PrimaryColumn, Column } from 'typeorm';
+import { BaseEntity, Entity, PrimaryColumn, Column, OneToOne } from 'typeorm';
 import { ISexType }  from './type-sex.enum';
+import { type } from 'os';
+import { Address } from 'src/address/address.entity';
 
 @Entity()
 export class Patient extends BaseEntity {
@@ -50,6 +52,11 @@ export class Patient extends BaseEntity {
    * Postal Code.
    */
   @Column({length:5})
+  @OneToOne(
+    type => Address,
+    address => address.CP,
+    {eager: false}
+  )
   CP: string;
   
   /**
