@@ -1,4 +1,4 @@
-import { BaseEntity, Entity, PrimaryColumn, Column, OneToMany } from 'typeorm';
+import { BaseEntity, Entity, PrimaryColumn, Column, OneToMany, ManyToOne } from 'typeorm';
 import { type } from 'os';
 import { Patient } from 'src/patient/patient.entity';
 
@@ -9,7 +9,7 @@ export class Pathology extends BaseEntity {
    * Patient's Dni.
    */
   @PrimaryColumn({length:11})
-  @OneToMany(
+  @ManyToOne(
     type => Patient,
     patient => patient.PatientDni,
     {eager: false}

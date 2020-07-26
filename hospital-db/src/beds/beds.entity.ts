@@ -1,4 +1,4 @@
-import { BaseEntity, Entity, PrimaryColumn, Column, OneToMany } from 'typeorm';
+import { BaseEntity, Entity, PrimaryColumn, Column, OneToMany, ManyToOne } from 'typeorm';
 import { isBoolean } from 'util';
 import { type } from 'os';
 import { Room } from 'src/room/room.entity';
@@ -22,7 +22,7 @@ export class Bed extends BaseEntity {
    * Room in which the bed is located.
    */
   @Column()
-  @OneToMany(
+  @ManyToOne(
     type => Room,
     room => room.RoomID
   )

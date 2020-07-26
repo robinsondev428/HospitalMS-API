@@ -1,16 +1,16 @@
-import { Repository, BaseEntity, Entity, PrimaryColumn, OneToMany, ManyToOne } from "typeorm";
+import { BaseEntity, Entity, PrimaryColumn, OneToMany, OneToOne } from "typeorm";
 import { type } from "os";
 import { Bed } from "src/beds/beds.entity";
 import { MedicalEquipment } from "src/medical-equipment/medical-equiment.entity";
 @Entity()
 export class EquipmentBed extends BaseEntity{
     @PrimaryColumn()
-    @ManyToOne(
+    @OneToOne(
         type => Bed,
         bed => bed.BedID,
         { eager: false}
     )
-    BedID: number;
+    BedID: string;
     @PrimaryColumn()
     @OneToMany(
         type => MedicalEquipment,
