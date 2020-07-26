@@ -1,6 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsNotEmpty, IsString, IsEnum, IsDate } from "class-validator";
-import { IRoleType } from "../type-role.enum";
+import { IRoleType } from "./type-role.enum";
 
 export class StaffDTO {
     /**

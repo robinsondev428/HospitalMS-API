@@ -1,6 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsNotEmpty, IsString, IsEnum, IsDate } from "class-validator";
-import { ISexType } from "../type-sex.enum";
+import { ISexType } from "./type-sex.enum";
 
 export class PatientDTO {
     /**
