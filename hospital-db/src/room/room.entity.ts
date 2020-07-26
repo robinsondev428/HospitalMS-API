@@ -1,5 +1,6 @@
-import { BaseEntity, Entity, PrimaryColumn, Column } from "typeorm";
+import { BaseEntity, Entity, PrimaryColumn, Column, ManyToOne, OneToMany } from 'typeorm';
 import { ITypeRoom } from "./dto/type-room.enum";
+import { Bed } from '../beds/beds.entity';
 
 @Entity()
 export class Room extends BaseEntity {
@@ -7,7 +8,7 @@ export class Room extends BaseEntity {
    * Id for the room
    */
   @PrimaryColumn()
-  RoomID: number;
+  Id: number;
   /**
    * Quantity of beds in the room
    */
@@ -28,4 +29,9 @@ export class Room extends BaseEntity {
    */
   @Column()
   Type: ITypeRoom;
+
+  @OneToMany(
+    type=> Bed, 
+    bed => bed.room)
+  Beds: Bed[];
 }

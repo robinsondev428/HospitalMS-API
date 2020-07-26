@@ -1,6 +1,7 @@
-import { BaseEntity, PrimaryColumn, Column, OneToMany, Entity, OneToOne } from 'typeorm';
+import { BaseEntity, PrimaryColumn, Column, Entity, ManyToOne, OneToOne, JoinColumn, OneToMany } from 'typeorm';
 import { Patient } from 'src/patient/patient.entity';
 import { MedicalProcedure } from 'src/medical-procedure/medical-procedure.entity';
+import { Treatment } from '../treatment/treatment.entity';
 @Entity()
 export class ClinicalRecord extends BaseEntity {
 
@@ -8,7 +9,7 @@ export class ClinicalRecord extends BaseEntity {
    * Registration code.
    */
   @PrimaryColumn({length:36})
-  RecordID: string;
+  Id: string;
 
   /**
    * Date the registration is made.
@@ -19,22 +20,24 @@ export class ClinicalRecord extends BaseEntity {
   /**
    * Procedure performed on the patient.
    */
-  @Column({length:36})
-  @OneToMany(
-    type => MedicalProcedure,
-    procedure => procedure.Id,
-    {eager: false}
-  )
-  ProcedureID: string;
+  @OneToOne(type => MedicalProcedure)
+  @JoinColumn()
+  procedure: MedicalProcedure;
 
   /**
    * Patient's Dni.
-   * TOOOO AASKKKKK
    */
-  @Column({length:11})
-  @OneToOne(
+  @ManyToOne(
     type => Patient,
-    patient => patient.PatientDni,
-    { eager: false },)
-  PatientDni: string;
+    patient => patient.Dni)
+  patient: Patient;
+  
+  /**
+   * 
+   */
+  @OneToMany(
+    type => Treatment,
+    treatment => treatment.clinicalRecord
+  )
+  treatment: Treatment[];
 }

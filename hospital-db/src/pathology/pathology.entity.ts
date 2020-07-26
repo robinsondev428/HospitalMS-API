@@ -8,13 +8,12 @@ export class Pathology extends BaseEntity {
   /**
    * Patient's Dni.
    */
-  @PrimaryColumn({length:11})
   @ManyToOne(
     type => Patient,
-    patient => patient.PatientDni,
-    {eager: false}
+    patient => patient.Dni,
+    { primary: true }
   )
-  PatientDni: string;
+  Patient: Patient
   
   /**
    * Pathology name.
@@ -27,4 +26,5 @@ export class Pathology extends BaseEntity {
    */
   @Column({length:255})
   Description: string;
+
 }

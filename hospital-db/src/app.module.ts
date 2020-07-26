@@ -12,8 +12,6 @@ import { PatientModule } from './patient/patient.module';
 import { ReservationModule } from './reservation/reservation.module';
 import { AddressModule } from './address/address.module';
 import { TreatmentModule } from './treatment/treatment.module';
-import { ReservationProcedureModule } from './reservation-procedure/reservation-procedure.module';
-import { EquimentBedModule } from './equiment-bed/equiment-bed.module';
 
 @Module({
   imports: [
@@ -28,9 +26,7 @@ import { EquimentBedModule } from './equiment-bed/equiment-bed.module';
     PatientModule,
     ReservationModule,
     AddressModule,
-    TreatmentModule,
-    ReservationProcedureModule,
-    EquimentBedModule,
+    TreatmentModule
     ],
   controllers: [],
   providers: [],

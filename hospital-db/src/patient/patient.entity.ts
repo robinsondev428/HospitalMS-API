@@ -1,7 +1,10 @@
-import { BaseEntity, Entity, PrimaryColumn, Column, OneToOne } from 'typeorm';
+import { BaseEntity, Entity, PrimaryColumn, Column, OneToOne, OneToMany, JoinColumn } from 'typeorm';
 import { ISexType }  from './type-sex.enum';
 import { type } from 'os';
 import { Address } from 'src/address/address.entity';
+import { Reservation } from 'src/reservation/reservation.entity';
+import { Pathology } from 'src/pathology/pathology.entity';
+import { ClinicalRecord } from '../clinical-records/clinical-records.entity';
 
 @Entity()
 export class Patient extends BaseEntity {
@@ -10,7 +13,7 @@ export class Patient extends BaseEntity {
    * Patient's Dni.
    */
   @PrimaryColumn({length: 11})
-  PatientDni: string;
+  Dni: string;
   
   /**
    * Password.
@@ -46,22 +49,42 @@ export class Patient extends BaseEntity {
    * Patient phone number.
    */
   @Column({length:15})
-  Phone:  string;
+  Phone: string;
   
   /**
    * Postal Code.
    */
-  @Column({length:5})
-  @OneToOne(
-    type => Address,
-    address => address.CP,
-    {eager: false}
-  )
-  CP: string;
+  @OneToOne(type => Address)
+  @JoinColumn()
+  address: Address;
   
   /**
    * Address detail.
    */
   @Column({length:255})
   OtherSigns: string;
+
+  /**
+   * 
+   */
+  @OneToMany(
+    type => Reservation,
+    reservation => reservation.Patient)
+  reservations: Reservation
+
+  /**
+   * 
+   */
+  @OneToMany(
+    type => Pathology,
+    pathology => pathology.Patient
+  )
+  pathologies: Pathology[];
+
+  @OneToMany(
+    type => ClinicalRecord,
+    clinicalRecord => clinicalRecord.patient
+  )
+  clinicalRecords: ClinicalRecord[];
+
 }

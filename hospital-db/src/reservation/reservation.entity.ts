@@ -1,7 +1,8 @@
-import { BaseEntity, Entity, PrimaryColumn, Column, ManyToOne } from 'typeorm';
+import { BaseEntity, Entity, PrimaryColumn, Column, ManyToOne, ManyToMany, JoinTable } from 'typeorm';
 import { type } from 'os';
 import { Bed } from 'src/beds/beds.entity';
 import { Patient } from 'src/patient/patient.entity';
+import { MedicalProcedure } from '../medical-procedure/medical-procedure.entity';
 
 @Entity()
 export class Reservation extends BaseEntity {
@@ -14,26 +15,32 @@ export class Reservation extends BaseEntity {
   /**
    * Dni of the patient making the reservation.
    */
-  @Column({ length: 11 })
+
   @ManyToOne(
     type => Patient,
-    patient => patient.PatientDni
+    patient => patient.Dni
   )
-  PatientDni: string;
+  Patient: Patient;
 
   /**
    * UUID of the bed assigned to the reservation.
    */
-  @Column({ length: 36 })
   @ManyToOne(
     type => Bed,
-    bed => bed.BedID
+    bed => bed.Id
   )
-  BedID: string;
+  Bed: Bed;
 
   /**
    * Patient's admission date.
    */
   @Column()
   ArrivalDate: Date;
+
+  /**
+   * 
+   */
+  @ManyToMany( type => MedicalProcedure)
+  @JoinTable()
+  procedures: MedicalProcedure[];
 }

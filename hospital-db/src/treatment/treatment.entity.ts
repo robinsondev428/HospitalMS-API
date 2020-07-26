@@ -1,4 +1,4 @@
-import { BaseEntity, Entity, PrimaryColumn, Column, ManyToOne } from 'typeorm';
+import { BaseEntity, Entity, Column, ManyToOne } from 'typeorm';
 import { ClinicalRecord } from 'src/clinical-records/clinical-records.entity';
 
 @Entity()
@@ -6,13 +6,12 @@ export class Treatment extends BaseEntity {
   /**
    * Id of the record
    */
-  @PrimaryColumn({ length: 36 })
   @ManyToOne(
     type => ClinicalRecord,
-    record => record.RecordID,
-    { eager: false },
+    record => record.treatment,
+    { primary: true}
   )
-  RecordId: string;
+  clinicalRecord: ClinicalRecord;
 
   /**
    * Name of the treatment
