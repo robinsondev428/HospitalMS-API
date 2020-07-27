@@ -1,5 +1,5 @@
 import { BaseEntity, Entity, PrimaryColumn, Column, OneToOne, OneToMany, JoinColumn } from 'typeorm';
-import { ISexType }  from './type-sex.enum';
+import { ISexType }  from './dto/type-sex.enum';
 import { type } from 'os';
 import { Address } from 'src/address/address.entity';
 import { Reservation } from 'src/reservation/reservation.entity';

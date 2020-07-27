@@ -1,5 +1,5 @@
 import { BaseEntity, Entity, PrimaryColumn, Column, OneToOne, JoinColumn } from 'typeorm';
-import { IRoleType } from  './type-role.enum';
+import { IRoleType } from  './dto/type-role.enum';
 import { type } from 'os';
 import { Address } from 'src/address/address.entity';
 

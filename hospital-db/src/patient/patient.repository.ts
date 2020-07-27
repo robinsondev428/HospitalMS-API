@@ -4,7 +4,7 @@ import { PatientDTO } from "./dto/patient.dto";
 
 @EntityRepository(Patient)
 export class PatientRepository extends Repository<Patient>{
-    createPatient(dataPatient: PatientDTO){
+    async createPatient(dataPatient: PatientDTO){
         const {Dni, DoB, address, OtherSigns, LastName, Name, Phone, Sex, pathologies} = dataPatient;
         const patient = new Patient();
         patient.Dni = Dni;
@@ -16,5 +16,6 @@ export class PatientRepository extends Repository<Patient>{
         patient.Phone = Phone;
         patient.Sex = Sex;
         patient.pathologies = pathologies;
+        return await patient.save()
     }
 }

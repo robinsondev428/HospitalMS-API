@@ -1,5 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsNotEmpty, IsString } from "class-validator";
+import { Patient } from "src/patient/patient.entity";
 
 export class PathologyDTO {
     /**
@@ -11,7 +12,7 @@ export class PathologyDTO {
     })
     @IsNotEmpty()
     @IsString()
-    PatientDni: string;
+    PatientDni: Patient;
 
     /**
      * Pathology name.

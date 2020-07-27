@@ -12,7 +12,7 @@ export class IRoomDTO{
     })
     @IsNotEmpty()
     @IsNumber()
-    RoomID: number;
+    ID: number;
     /**
      * Quantity of beds in the room
      */

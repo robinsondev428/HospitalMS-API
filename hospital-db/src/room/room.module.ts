@@ -6,7 +6,7 @@ import { RoomRepository } from './room.repository';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([RoomRepository]),
+    TypeOrmModule.forFeature([RoomRepository])
   ],
   controllers: [RoomController],
   providers: [RoomService]
