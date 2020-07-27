@@ -1,6 +1,10 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsNotEmpty, IsString, IsEnum, IsDate } from "class-validator";
 import { ISexType } from "../type-sex.enum";
+import { Address } from "src/address/address.entity";
+import { Reservation } from "src/reservation/reservation.entity";
+import { Pathology } from "src/pathology/pathology.entity";
+import { ClinicalRecord } from "src/clinical-records/clinical-records.entity";
 
 export class PatientDTO {
     /**
@@ -12,18 +16,7 @@ export class PatientDTO {
     })
     @IsNotEmpty()
     @IsString()
-    PatientDni: string;
-
-    /**
-     * Password.
-     */
-    @ApiProperty({
-        example: 'Teltron',
-        description: 'Password.'
-    })
-    @IsNotEmpty()
-    @IsString()
-    Password: string;
+    Dni: string;
 
     /**
      * Patient first name.
@@ -89,7 +82,7 @@ export class PatientDTO {
     })
     @IsNotEmpty()
     @IsString()
-    CP: string;
+    address: Address;
 
     /**
      * Address detail.
@@ -101,4 +94,13 @@ export class PatientDTO {
     @IsNotEmpty()
     @IsString()
     OtherSigns: string;
+
+    /**
+     * Pathologies of the patient
+     */
+    @ApiProperty({
+        example: 'Teltron',
+        description: 'Pathologies of the patient'
+    })
+    pathologies: Pathology[];
 }

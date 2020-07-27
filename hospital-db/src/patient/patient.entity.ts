@@ -65,7 +65,7 @@ export class Patient extends BaseEntity {
   OtherSigns: string;
 
   /**
-   * 
+   * Reservation of a bed
    */
   @OneToMany(
     type => Reservation,
@@ -73,14 +73,16 @@ export class Patient extends BaseEntity {
   reservations: Reservation
 
   /**
-   * 
+   * Pathologies of the patient
    */
   @OneToMany(
     type => Pathology,
     pathology => pathology.Patient
   )
   pathologies: Pathology[];
-
+    /**
+     * Clinical records of the page
+     */
   @OneToMany(
     type => ClinicalRecord,
     clinicalRecord => clinicalRecord.patient
