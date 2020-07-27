@@ -1,5 +1,7 @@
 import { IsString, IsNotEmpty, IsBoolean, IsNumber } from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
+import { Room } from "src/room/room.entity";
+import { MedicalEquipment } from "src/medical-equipment/medical-equiment.entity";
 
 export class BedDTO {
     /**
@@ -11,7 +13,7 @@ export class BedDTO {
     })
     @IsNotEmpty()
     @IsString()
-    BedID: string;
+    ID: string;
 
     /**
      * Indicates if it is an ICU bed.
@@ -32,6 +34,14 @@ export class BedDTO {
         description: 'Room in which the bed is located.'
     })
     @IsNotEmpty()
-    @IsNumber()
-    RoomID: number;
+    RoomID: Room;
+    /**
+     * Equipment that te bed had.
+     */
+    @ApiProperty({
+        example: '1',
+        description: 'Equipment that te bed had'
+    })
+    EquipmentID: MedicalEquipment[];
+
 }
