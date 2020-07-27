@@ -11,8 +11,10 @@ export class Pathology extends BaseEntity {
   @ManyToOne(
     type => Patient,
     patient => patient.Dni,
-    { primary: true }
-  )
+    { 
+      primary: true,
+      onDelete: 'CASCADE' 
+    })
   Patient: Patient
   
   /**

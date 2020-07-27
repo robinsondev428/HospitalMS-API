@@ -9,8 +9,8 @@ export class Treatment extends BaseEntity {
   @ManyToOne(
     type => ClinicalRecord,
     record => record.treatment,
-    { primary: true}
-  )
+    { primary: true,
+      onDelete:'CASCADE'})
   clinicalRecord: ClinicalRecord;
 
   /**

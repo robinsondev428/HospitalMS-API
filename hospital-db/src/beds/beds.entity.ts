@@ -1,5 +1,4 @@
 import { BaseEntity, Entity, PrimaryColumn, Column, OneToMany, ManyToOne, JoinTable, ManyToMany } from 'typeorm';
-import { isBoolean } from 'util';
 import { type } from 'os';
 import { Room } from 'src/room/room.entity';
 import { MedicalEquipment } from '../medical-equipment/medical-equiment.entity';

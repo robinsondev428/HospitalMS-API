@@ -18,7 +18,8 @@ export class Reservation extends BaseEntity {
 
   @ManyToOne(
     type => Patient,
-    patient => patient.Dni
+    patient => patient.Dni,
+    {onDelete:'CASCADE'}
   )
   Patient: Patient;
 
