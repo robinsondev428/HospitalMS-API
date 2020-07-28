@@ -49,7 +49,7 @@ export class PatientService {
         async getPatient(dniPatient: string){
             const found = await this.patientRepository.findOne(dniPatient);
             if(isNull(found)){
-                throw new NotFoundException(`El paciente con el dni ${dniPatient} no existe`)
+                throw new NotFoundException(`Patient with DNI: "${dniPatient}" not found`)
             }
             return found;
         }
