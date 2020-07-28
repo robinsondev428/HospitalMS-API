@@ -29,7 +29,7 @@ export class ClinicalRecord extends BaseEntity {
    */
   @ManyToOne(
     type => Patient,
-    patient => patient.Dni,
+    patient => patient.clinicalRecords,
     {onDelete:'CASCADE'})
   patient: Patient;
   
