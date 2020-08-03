@@ -1,5 +1,4 @@
-import { BaseEntity, Entity, PrimaryColumn, Column, ManyToOne, OneToMany } from 'typeorm';
-import { ClinicalRecord } from '../clinical-records/clinical-records.entity';
+import { BaseEntity, Entity, PrimaryColumn, Column} from 'typeorm';
 
 @Entity()
 export class MedicalProcedure extends BaseEntity {

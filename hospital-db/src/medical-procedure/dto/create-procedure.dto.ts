@@ -1,17 +1,8 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsNotEmpty, IsString, IsNumber } from "class-validator";
+import { IsNotEmpty, IsNumber } from "class-validator";
 
-export class medicalProcedureDTO {
-    /**
-     * Id of the procedure
-      */
-    @ApiProperty({
-        example: '1',
-        description: ' Id of the procedure'
-    })
-    @IsNotEmpty()
-    @IsString()
-    Id: string;
+export class CreateMedicalProcedureDTO {
+
     /**
      * Name of the procedure
      */
@@ -20,8 +11,8 @@ export class medicalProcedureDTO {
         description: 'Name of the procedure'
     })
     @IsNotEmpty()
-    @IsString()
     Name: string;
+
     /**
      * Description of the procedure
      */
@@ -30,8 +21,8 @@ export class medicalProcedureDTO {
         description: 'Description of the procedure'
     })
     @IsNotEmpty()
-    @IsString()
     Description: string;
+    
     /**
      * Time spent in the procedure in minute
      */

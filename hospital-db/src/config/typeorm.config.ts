@@ -16,10 +16,10 @@ import { Treatment } from "src/treatment/treatment.entity";
  */
 export const typeOrmConfig: TypeOrmModuleOptions = {
     type: 'postgres',
-    host: 'tec-hospital-2020.postgres.database.azure.com',
+    host: 'hospital-bd-2022.postgres.database.azure.com',
     port: 5432,
-    username: 'admin1DB@tec-hospital-2020',
-    password: 'Mzs;[.8>,MN@',
+    username: 'orbeteam@hospital-bd-2022',
+    password: '-_T>"J#+4FeA',
     database: 'hospitalDB',
     entities: [
         Bed,
