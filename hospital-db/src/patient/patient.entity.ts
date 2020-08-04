@@ -58,7 +58,7 @@ export class Patient extends BaseEntity {
   @ManyToOne(
     type => Address,
     address => address.patients)
-  address: Address;
+  address_: Address;
   
   /**
    * Address detail.
