@@ -26,7 +26,7 @@ export class Bed extends BaseEntity {
   @ManyToOne(
     type => Room,
     room => room.beds)
-  room: Room;
+  room_: Room;
 
   @ManyToMany(type=> MedicalEquipment)
   @JoinTable()

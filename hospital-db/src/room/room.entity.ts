@@ -13,7 +13,7 @@ export class Room extends BaseEntity {
    * Quantity of beds in the room
    */
   @Column()
-  bedsQty: number;
+  beds_qty: number;
   /**
    * Number of the floor in the room
    */
@@ -32,6 +32,6 @@ export class Room extends BaseEntity {
 
   @OneToMany(
     type=> Bed, 
-    bed => bed.room)
+    bed => bed.room_)
   beds: Bed[];
 }

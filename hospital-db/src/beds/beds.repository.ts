@@ -12,7 +12,7 @@ export class BedsRepository extends Repository<Bed>{
         const bed = new Bed();
         bed.id = ID;
         bed.uci = UCI;
-        bed.room = RoomID;
+        bed.room_ = RoomID;
         bed.equipment = EquipmentID;
         console.log('new Bed', bed);
         return await bed.save();
