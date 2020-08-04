@@ -10,43 +10,43 @@ export class Staff extends BaseEntity {
    * Employee ID.
    */
   @PrimaryColumn({length:11})
-  StaffDni: string;
+  dni: string;
   
   /**
    * Employee username.
    */
   @Column({length:15})
-  Username: string;
+  username: string;
   
   /**
    * Employee password.
    */
   @Column({length:20})
-  Password: string;
+  password: string;
   
   /**
    * Name of the employee.
    */
   @Column({length:30})
-  Name: string;
+  name: string;
   
   /**
    * Employee's last name.
    */
   @Column({length:50})
-  LastName: string;
+  lastname: string;
   
   /**
    * Date of birth.
    */
   @Column()
-  DoB: Date;
+  dob: Date;
   
   /**
    * Phone number.
    */
   @Column({length:15})
-  Phone:  string;
+  phone:  string;
   
   /**
    * Postal Code.
@@ -59,17 +59,17 @@ export class Staff extends BaseEntity {
    * Detailed address.
    */
   @Column({length:255})
-  OtherSigns: string;
+  otherSigns: string;
   
   /**
    * Date of admission as a hospital worker.
    */
   @Column()
-  StartDate: Date;
+  startDate: Date;
   
   /**
    * Role of the employee in the hospital.
    */
   @Column()
-  Role: IRoleType;
+  role: IRoleType;
 }

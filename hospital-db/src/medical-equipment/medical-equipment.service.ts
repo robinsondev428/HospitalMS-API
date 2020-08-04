@@ -40,9 +40,9 @@ export class MedicalEquipmentService {
     async updateEquipment(idEq: string, dataEq: MedicalEquipmentDTO){
         const equipment = await this.getOneEquipment(idEq);
         const { Name, Provider, Qty} = dataEq;
-        equipment.Name = Name;
-        equipment.Provider = Provider;
-        equipment.Qty = Qty;
+        equipment.name = Name;
+        equipment.provider = Provider;
+        equipment.qty = Qty;
         return await equipment.save();
     }
 }

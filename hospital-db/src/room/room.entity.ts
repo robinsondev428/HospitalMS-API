@@ -8,30 +8,30 @@ export class Room extends BaseEntity {
    * Id for the room
    */
   @PrimaryColumn()
-  Id: number;
+  id: number;
   /**
    * Quantity of beds in the room
    */
   @Column()
-  BedsQty: number;
+  bedsQty: number;
   /**
    * Number of the floor in the room
    */
   @Column()
-  Floor: number;
+  floor: number;
   /**
    * Name of the room
    */
   @Column({ length: 30 })
-  Name: string;
+  name: string;
   /**
    * Type of the room
    */
   @Column()
-  Type: ITypeRoom;
+  type: ITypeRoom;
 
   @OneToMany(
     type=> Bed, 
     bed => bed.room)
-  Beds: Bed[];
+  beds: Bed[];
 }

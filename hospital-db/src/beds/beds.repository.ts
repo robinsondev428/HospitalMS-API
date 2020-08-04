@@ -10,8 +10,8 @@ export class BedsRepository extends Repository<Bed>{
     async createBed(BedData: BedDTO){
         const {ID, UCI, RoomID, EquipmentID} = BedData;
         const bed = new Bed();
-        bed.Id = ID;
-        bed.UCI = UCI;
+        bed.id = ID;
+        bed.uci = UCI;
         bed.room = RoomID;
         bed.equipment = EquipmentID;
         console.log('new Bed', bed);

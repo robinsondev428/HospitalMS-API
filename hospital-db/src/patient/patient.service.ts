@@ -31,13 +31,13 @@ export class PatientService {
         async updatePatient(dniPatient: string,dataPatient: PatientDTO){
             const patient = await this.getPatient(dniPatient);
             const { DoB, address, OtherSigns, LastName, Name, Phone, Sex, pathologies} = dataPatient;
-            patient.DoB = DoB;
+            patient.dob = DoB;
             patient.address = address;
-            patient.OtherSigns = OtherSigns;
-            patient.LastName = LastName;
-            patient.Name = Name;
-            patient.Phone = Phone;
-            patient.Sex = Sex;
+            patient.otherSigns = OtherSigns;
+            patient.lastname = LastName;
+            patient.name = Name;
+            patient.phone = Phone;
+            patient.sex = Sex;
             patient.pathologies = pathologies;
             return await patient.save();
         }

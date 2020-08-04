@@ -27,8 +27,8 @@ export class ClinicalRecordsRepository extends Repository<ClinicalRecord>{
     // Set record id, date, patient and procedure
     const record = new ClinicalRecord();
 
-    record.Id = uuid(); // Generate a uuid for the record.
-    record.Date = Date;
+    record.id = uuid(); // Generate a uuid for the record.
+    record.date = Date;
     record.procedure = procedure;
     record.patient = patient;
     await record.save(); // Save record

@@ -63,8 +63,8 @@ export class MedicalProcedureService {
     const  {Description, Time}  = updateProcedureDTO;
     const procedure = await this.getMedicalProcedureById(id);
 
-    procedure.Description = Description;
-    procedure.Time = Time;
+    procedure.description = Description;
+    procedure.time = Time;
     await procedure.save();
 
     return procedure;

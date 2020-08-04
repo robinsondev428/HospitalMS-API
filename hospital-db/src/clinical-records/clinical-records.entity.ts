@@ -9,13 +9,13 @@ export class ClinicalRecord extends BaseEntity {
    * Registration code.
    */
   @PrimaryColumn({length:36})
-  Id: string;
+  id: string;
 
   /**
    * Date the registration is made.
    */
   @Column()
-  Date: Date;
+  date: Date;
 
   /**
    * Procedure performed on the patient.

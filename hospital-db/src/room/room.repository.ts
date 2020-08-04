@@ -10,11 +10,11 @@ export class RoomRepository extends Repository<Room>{
     async createRoom(roomData: IRoomDTO){
         const { BedsQty, Floor, ID, Name, Type} = roomData;
         const room = new Room();
-        room.Id = ID;
-        room.Name = Name;
-        room.BedsQty = BedsQty;
-        room.Floor = Floor;
-        room.Type = Type;
+        room.id = ID;
+        room.name = Name;
+        room.bedsQty = BedsQty;
+        room.floor = Floor;
+        room.type = Type;
         console.log('newRoom', room);
         return await room.save();
     }

@@ -17,10 +17,10 @@ export class MedicalProcedureRepository extends Repository<MedicalProcedure>{
 
     const procedure = new MedicalProcedure();
 
-    procedure.Id = uuid(); // Generate a uuid for the procedure.
-    procedure.Name = Name;
-    procedure.Description = Description;
-    procedure.Time = Time;
+    procedure.id = uuid(); // Generate a uuid for the procedure.
+    procedure.name = Name;
+    procedure.description = Description;
+    procedure.time = Time;
     await procedure.save();
 
     return procedure;

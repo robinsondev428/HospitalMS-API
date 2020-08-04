@@ -13,43 +13,43 @@ export class Patient extends BaseEntity {
    * Patient's Dni.
    */
   @PrimaryColumn({length: 255})
-  Dni: string;
+  dni: string;
   
   /**
    * Password.
    */
   @Column({length:20})
-  Password: string;
+  password: string;
   
   /**
    * Patient first name.
    */
   @Column({length:30})
-  Name: string;
+  name: string;
   
   /**
    * Patient lastname.
    */
   @Column({length:50})
-  LastName: string;
+  lastname: string;
   
   /**
    * Day of Birth.
    */
   @Column()
-  DoB: Date;
+  dob: Date;
   
   /**
    * Patient sex.
    */
   @Column()
-  Sex: ISexType;
+  sex: ISexType;
   
   /**
    * Patient phone number.
    */
   @Column({length:15})
-  Phone: string;
+  phone: string;
   
   /**
    * Postal Code.
@@ -62,14 +62,14 @@ export class Patient extends BaseEntity {
    * Address detail.
    */
   @Column({length:255})
-  OtherSigns: string;
+  otherSigns: string;
 
   /**
    * Reservation of a bed
    */
   @OneToMany(
     type => Reservation,
-    reservation => reservation.Patient)
+    reservation => reservation.patient)
   reservations: Reservation
 
   /**
@@ -77,7 +77,7 @@ export class Patient extends BaseEntity {
    */
   @OneToMany(
     type => Pathology,
-    pathology => pathology.Patient
+    pathology => pathology.patient
   )
   pathologies: Pathology[];
     /**

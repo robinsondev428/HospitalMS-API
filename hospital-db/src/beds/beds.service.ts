@@ -42,7 +42,7 @@ export class BedsService {
     async updateBed(idBed: string, dataBed: BedDTO){
         const bed = await this.getBed(idBed);
         const { UCI, RoomID, EquipmentID} = dataBed;
-        bed.UCI = UCI;
+        bed.uci = UCI;
         bed.equipment = EquipmentID;
         bed.room = RoomID;
         return await bed.save();

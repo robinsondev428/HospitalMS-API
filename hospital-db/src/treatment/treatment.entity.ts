@@ -17,11 +17,11 @@ export class Treatment extends BaseEntity {
    * Name of the treatment
    */
   @Column({ length: 60 })
-  Name: string;
+  name: string;
 
   /**
    * Description of the treatment
    */
   @Column({ length: 255 })
-  Description: string;
+  description: string;
 }

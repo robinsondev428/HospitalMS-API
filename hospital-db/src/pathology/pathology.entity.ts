@@ -10,23 +10,23 @@ export class Pathology extends BaseEntity {
    */
   @ManyToOne(
     type => Patient,
-    patient => patient.Dni,
+    patient => patient.dni,
     { 
       primary: true,
       onDelete: 'CASCADE' 
     })
-  Patient: Patient
+  patient: Patient
   
   /**
    * Pathology name.
    */
   @Column({length:60})
-  Name: string;
+  name: string;
   
   /**
    * Pathology treatment.
    */
   @Column({length:255})
-  Description: string;
+  description: string;
 
 }

@@ -12,17 +12,17 @@ export class Address extends BaseEntity {
    * Province of the address
    */
   @Column({ length: 10 })
-  Province: string;
+  province: string;
 
   /**
    * Canton of the address
    */
   @Column({ length: 15 })
-  Canton: string;
+  canton: string;
 
   /**
    * District of the address
    */
   @Column({ length: 15 })
-  District: string;
+  district: string;
 }

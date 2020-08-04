@@ -19,7 +19,7 @@ export class PathologyService {
      * @param NameP name of the pathology
      */
     async getOnePathologyByName(NameP: string){
-        const found = await this.pathologyRepository.findOne({where: {'Name':NameP }})
+        const found = await this.pathologyRepository.findOne({where: {'name':NameP }})
         if(!found){
             throw new NotFoundException(`La patología con el nombre ${NameP} no existe`);
         }

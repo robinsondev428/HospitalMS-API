@@ -6,24 +6,24 @@ export class MedicalProcedure extends BaseEntity {
    * Id of the procedure
    */
   @PrimaryColumn({length: 36})
-  Id: string;
+  id: string;
 
   /**
    * Name of the procedure
    */
   @Column()
-  Name: string;
+  name: string;
 
   /**
    * Description of the procedure
    */
   @Column()
-  Description: string;
+  description: string;
 
   /**
    * Time spent in the procedure
    */
   @Column()
-  Time: number;
+  time: number;
 
 }

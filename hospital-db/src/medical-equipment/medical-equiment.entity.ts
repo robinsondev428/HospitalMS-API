@@ -7,23 +7,23 @@ export class MedicalEquipment extends BaseEntity {
    * Asset UUID code.
    */
   @PrimaryColumn({length:36})
-  Id: string;
+  id: string;
   
   /**
    * Equipment name.
    */
   @Column({length:30})
-  Name: string;
+  name: string;
   
   /**
    * Medical equipment provider.
    */
   @Column({length:30})
-  Provider: string;
+  provider: string;
   
   /**
    * Quantity of units available.
    */
   @Column()
-  Qty: number;
+  qty: number;
 }

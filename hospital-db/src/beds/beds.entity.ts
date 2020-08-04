@@ -11,20 +11,20 @@ export class Bed extends BaseEntity {
    * Bed UUID.
    */
   @PrimaryColumn({length:36})
-  Id: string;
+  id: string;
 
   /**
    * Indicates if it is an ICU bed.
    */
   @Column()
-  UCI: boolean;
+  uci: boolean;
 
   /**
    * Room in which the bed is located.
    */
   @ManyToOne(
     type => Room,
-    room => room.Beds
+    room => room.beds
   )
   room: Room;
 
@@ -34,6 +34,6 @@ export class Bed extends BaseEntity {
 
   @OneToMany(
     type=> Reservation,
-    reservation => reservation.Bed)
+    reservation => reservation.bed)
   reservation: Reservation[];
 }

@@ -8,15 +8,15 @@ export class PatientRepository extends Repository<Patient>{
     async createPatient(dataPatient: PatientDTO){
         const { DoB, address, OtherSigns, LastName, Name, Phone, Sex, pathologies, Password} = dataPatient;
         const patient = new Patient();
-        patient.Dni = uuidv1();
-        patient.Name = Name;
-        patient.DoB = DoB;
-        patient.LastName = LastName;
+        patient.dni = uuidv1();
+        patient.name = Name;
+        patient.dob = DoB;
+        patient.lastname = LastName;
         patient.address = address;
-        patient.OtherSigns = OtherSigns;
-        patient.Phone = Phone;
-        patient.Sex = Sex;
-        patient.Password = Password;
+        patient.otherSigns = OtherSigns;
+        patient.phone = Phone;
+        patient.sex = Sex;
+        patient.password = Password;
         patient.pathologies = pathologies;
         return await patient.save()
     }
