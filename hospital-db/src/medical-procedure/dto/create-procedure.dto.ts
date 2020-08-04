@@ -11,7 +11,7 @@ export class CreateMedicalProcedureDTO {
         description: 'Name of the procedure'
     })
     @IsNotEmpty()
-    Name: string;
+    name: string;
 
     /**
      * Description of the procedure
@@ -21,7 +21,7 @@ export class CreateMedicalProcedureDTO {
         description: 'Description of the procedure'
     })
     @IsNotEmpty()
-    Description: string;
+    description: string;
     
     /**
      * Time spent in the procedure in minute
@@ -32,5 +32,5 @@ export class CreateMedicalProcedureDTO {
     })
     @IsNotEmpty()
     @IsNumber()
-    Time: number;
+    time: number;
 }

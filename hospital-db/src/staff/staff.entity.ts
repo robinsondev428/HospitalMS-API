@@ -1,4 +1,5 @@
-import { BaseEntity, Entity, PrimaryColumn, Column, OneToOne, JoinColumn } from 'typeorm';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { BaseEntity, Entity, PrimaryColumn, Column, ManyToOne } from 'typeorm';
 import { IRoleType } from  './dto/type-role.enum';
 import { type } from 'os';
 import { Address } from 'src/address/address.entity';
@@ -51,15 +52,16 @@ export class Staff extends BaseEntity {
   /**
    * Postal Code.
    */
-  @OneToOne(type => Address)
-  @JoinColumn()
+  @ManyToOne(
+    type => Address,
+    address => address.staff)
   address: Address;
   
   /**
    * Detailed address.
    */
   @Column({length:255})
-  otherSigns: string;
+  other_signs: string;
   
   /**
    * Date of admission as a hospital worker.

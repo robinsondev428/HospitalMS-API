@@ -1,4 +1,5 @@
-import { BaseEntity, Entity, PrimaryColumn, Column, OneToOne, OneToMany, JoinColumn } from 'typeorm';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { BaseEntity, Entity, PrimaryColumn, Column, OneToOne, OneToMany, JoinColumn, ManyToOne } from 'typeorm';
 import { ISexType }  from './dto/type-sex.enum';
 import { type } from 'os';
 import { Address } from 'src/address/address.entity';
@@ -54,15 +55,16 @@ export class Patient extends BaseEntity {
   /**
    * Postal Code.
    */
-  @OneToOne(type => Address)
-  @JoinColumn()
+  @ManyToOne(
+    type => Address,
+    address => address.patients)
   address: Address;
   
   /**
    * Address detail.
    */
   @Column({length:255})
-  otherSigns: string;
+  other_signs: string;
 
   /**
    * Reservation of a bed

@@ -13,7 +13,7 @@ export class MedicalProcedureRepository extends Repository<MedicalProcedure>{
   async createMedicalProcedure(
     createMedicalProcedure: CreateMedicalProcedureDTO 
   ): Promise<MedicalProcedure> {
-    const { Name, Description, Time} = createMedicalProcedure;
+    const { name: Name, description: Description, time: Time} = createMedicalProcedure;
 
     const procedure = new MedicalProcedure();
 

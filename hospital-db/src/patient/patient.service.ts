@@ -33,7 +33,7 @@ export class PatientService {
             const { DoB, address, OtherSigns, LastName, Name, Phone, Sex, pathologies} = dataPatient;
             patient.dob = DoB;
             patient.address = address;
-            patient.otherSigns = OtherSigns;
+            patient.other_signs = OtherSigns;
             patient.lastname = LastName;
             patient.name = Name;
             patient.phone = Phone;

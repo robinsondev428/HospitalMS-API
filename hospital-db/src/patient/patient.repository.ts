@@ -13,7 +13,7 @@ export class PatientRepository extends Repository<Patient>{
         patient.dob = DoB;
         patient.lastname = LastName;
         patient.address = address;
-        patient.otherSigns = OtherSigns;
+        patient.other_signs = OtherSigns;
         patient.phone = Phone;
         patient.sex = Sex;
         patient.password = Password;
