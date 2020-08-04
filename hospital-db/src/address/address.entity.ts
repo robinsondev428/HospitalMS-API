@@ -36,6 +36,6 @@ export class Address extends BaseEntity {
 
   @OneToMany(
     type => Patient,
-    patient => patient.address)
+    patient => patient.address_)
   patients: Patient[];
 }
