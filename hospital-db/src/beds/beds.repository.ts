@@ -1,7 +1,20 @@
 import { Repository, EntityRepository } from "typeorm";
-import { IBed } from "./beds.entity";
+import { Bed } from "./beds.entity";
+import { BedDTO } from "./dto/beds.dto";
 
-@EntityRepository(IBed)
-export class BedsRepository extends Repository<IBed>{
-
+@EntityRepository(Bed)
+export class BedsRepository extends Repository<Bed>{
+    /**
+     * Create a bed
+     */
+    async createBed(BedData: BedDTO){
+        const {ID, UCI, RoomID, EquipmentID} = BedData;
+        const bed = new Bed();
+        bed.id = ID;
+        bed.uci = UCI;
+        bed.room = RoomID;
+        bed.equipment = EquipmentID;
+        console.log('new Bed', bed);
+        return await bed.save();
+    }
 }
