@@ -30,8 +30,7 @@ export class PatientService {
          */
         async updatePatient(dniPatient: string,dataPatient: PatientDTO){
             const patient = await this.getPatient(dniPatient);
-            const {Dni, DoB, address, OtherSigns, LastName, Name, Phone, Sex, pathologies} = dataPatient;
-            patient.Dni = Dni;
+            const { DoB, address, OtherSigns, LastName, Name, Phone, Sex, pathologies} = dataPatient;
             patient.DoB = DoB;
             patient.address = address;
             patient.OtherSigns = OtherSigns;

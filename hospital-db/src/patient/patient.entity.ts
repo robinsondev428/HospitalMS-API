@@ -12,7 +12,7 @@ export class Patient extends BaseEntity {
   /**
    * Patient's Dni.
    */
-  @PrimaryColumn({length: 11})
+  @PrimaryColumn({length: 255})
   Dni: string;
   
   /**
