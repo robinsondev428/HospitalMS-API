@@ -71,7 +71,7 @@ export class Patient extends BaseEntity {
    */
   @OneToMany(
     type => Reservation,
-    reservation => reservation.patient)
+    reservation => reservation.patient_)
   reservations: Reservation
 
   /**

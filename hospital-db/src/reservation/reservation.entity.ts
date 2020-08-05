@@ -10,7 +10,7 @@ export class Reservation extends BaseEntity {
   /**
    * Reservation UUID code.
    */
-  @PrimaryColumn({ length: 36 })
+  @PrimaryColumn({ length: 255 })
   id: string;
 
   /**
@@ -22,7 +22,7 @@ export class Reservation extends BaseEntity {
     patient => patient.dni,
     {onDelete:'CASCADE'}
   )
-  patient: Patient;
+  patient_: Patient;
 
   /**
    * UUID of the bed assigned to the reservation.
@@ -31,13 +31,13 @@ export class Reservation extends BaseEntity {
     type => Bed,
     bed => bed.id
   )
-  bed: Bed;
+  bed_: Bed;
 
   /**
    * Patient's admission date.
    */
   @Column()
-  arrivalDate: Date;
+  arrival_date: Date;
 
   /**
    * 

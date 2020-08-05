@@ -11,7 +11,7 @@ export class Bed extends BaseEntity {
   /**
    * Bed UUID.
    */
-  @PrimaryColumn({length:36})
+  @PrimaryColumn({length:255})
   id: string;
 
   /**
@@ -34,6 +34,6 @@ export class Bed extends BaseEntity {
 
   @OneToMany(
     type=> Reservation,
-    reservation => reservation.bed)
+    reservation => reservation.bed_)
   reservation: Reservation[];
 }
