@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { BaseEntity, Entity, PrimaryColumn, Column, ManyToOne, ManyToMany, JoinTable } from 'typeorm';
+import { BaseEntity, Entity, PrimaryColumn, Column, ManyToOne, ManyToMany, JoinTable, PrimaryGeneratedColumn } from 'typeorm';
 import { type } from 'os';
 import { Bed } from 'src/beds/beds.entity';
 import { Patient } from 'src/patient/patient.entity';
@@ -10,7 +10,7 @@ export class Reservation extends BaseEntity {
   /**
    * Reservation UUID code.
    */
-  @PrimaryColumn({ length: 255 })
+  @PrimaryGeneratedColumn("uuid")
   id: string;
 
   /**
@@ -40,7 +40,13 @@ export class Reservation extends BaseEntity {
   arrival_date: Date;
 
   /**
-   * 
+   * Patient's admission date.
+   */
+  @Column({nullable: true})
+  departure_date: Date;
+
+  /**
+   * List of procedures 
    */
   @ManyToMany( type => MedicalProcedure)
   @JoinTable()

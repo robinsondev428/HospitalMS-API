@@ -1,7 +1,6 @@
 import { Repository, EntityRepository, Connection } from "typeorm";
 import { ClinicalRecord } from './clinical-records.entity';
 import { CreateClinicalRecordDTO } from "./dto/create-clinicalRecord.dto";
-import { v1 as uuid } from "uuid";
 import { NotFoundException } from '@nestjs/common';
 import { Patient } from '../patient/patient.entity';
 import { MedicalProcedure } from '../medical-procedure/medical-procedure.entity';
@@ -27,7 +26,6 @@ export class ClinicalRecordsRepository extends Repository<ClinicalRecord>{
     // Set record id, date, patient and procedure
     const record = new ClinicalRecord();
 
-    record.id = uuid(); // Generate a uuid for the record.
     record.date = Date;
     record.procedure = procedure;
     record.patient = patient;

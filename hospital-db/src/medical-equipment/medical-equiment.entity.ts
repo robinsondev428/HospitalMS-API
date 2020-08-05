@@ -1,4 +1,4 @@
-import { BaseEntity, Entity, PrimaryColumn, Column } from "typeorm";
+import { BaseEntity, Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class MedicalEquipment extends BaseEntity {
@@ -6,7 +6,7 @@ export class MedicalEquipment extends BaseEntity {
   /**
    * Asset UUID code.
    */
-  @PrimaryColumn({length:36})
+  @PrimaryGeneratedColumn("uuid")
   id: string;
   
   /**
