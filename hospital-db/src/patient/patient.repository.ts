@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/camelcase */
 import { Repository, EntityRepository } from "typeorm";
 import { Patient } from "./patient.entity";
 import { PatientDTO } from "./dto/patient.dto";

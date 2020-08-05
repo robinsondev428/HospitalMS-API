@@ -16,7 +16,7 @@ export class Staff extends BaseEntity {
   /**
    * Employee username.
    */
-  @Column({length:15})
+  @Column({length:30})
   username: string;
   
   /**

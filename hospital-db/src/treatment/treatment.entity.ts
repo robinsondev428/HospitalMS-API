@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { BaseEntity, Entity, Column, ManyToOne } from 'typeorm';
 import { ClinicalRecord } from 'src/clinical-records/clinical-records.entity';
 
