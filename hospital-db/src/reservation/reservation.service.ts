@@ -2,15 +2,12 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { ReservationRepository } from './reservation.repository';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ReservationDTO } from './dto/reservation.dto';
-import { MedicalProcedureRepository } from 'src/medical-procedure/medical-procedure.repository';
 
 @Injectable()
 export class ReservationService {
     constructor(
         @InjectRepository(ReservationRepository)
-        private reservationRepository: ReservationRepository,
-        private procedureRepository: MedicalProcedureRepository
-    ){}
+        private reservationRepository: ReservationRepository    ){}
     /**
      * Create a new Reservation
      * @param data of a reservation
@@ -18,9 +15,6 @@ export class ReservationService {
     async createReservation(data: ReservationDTO){
         const finish_date = this.reservationRepository.query(`call hfx_calculate_departure_date(${data.ArrivalDate}, ${data}) `)
         return await this.reservationRepository.createReservation(data, finish_date);
-    }
-    getDays(patientDNI){
-        const procedur = this.procedureRepository;
     }
     /**
      * Get all the reservation
