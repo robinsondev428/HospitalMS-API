@@ -11,12 +11,12 @@ export class StaffController {
 
   
   @Get('/:dni')
-  getStaffByDni(@Param('dni') dni: string): Promise<Staff> {
+  getStaffByDni(@Param('dni') dni: string): Promise<any> {
     return this.staffService.getStaffByDni(dni);
   }
 
   @Get()
-  getAllStaff(): Promise<Staff[]> {
+  getAllStaff(): Promise<any[]> {
     return this.staffService.getAllStaff();
   }
 
