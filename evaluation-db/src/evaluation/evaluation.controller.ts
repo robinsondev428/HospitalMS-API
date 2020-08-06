@@ -23,6 +23,7 @@ export class EvaluationController {
     @ApiResponse({ status: 201 })
     @UsePipes(ValidationPipe)
     async createPostulant(@Body() data: EvaluationDTO) {
+        console.log('holi', data);
         const result = await this.evaluationService.createEvaluation(data);
         return result;
     }
