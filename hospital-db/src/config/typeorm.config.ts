@@ -9,7 +9,6 @@ import { Address } from "src/address/address.entity";
 import { Pathology } from "src/pathology/pathology.entity";
 import { Patient } from "src/patient/patient.entity";
 import { Reservation } from "src/reservation/reservation.entity";
-import { Treatment } from "src/treatment/treatment.entity";
 
 /**
  * Configuration of the postgres connection
@@ -32,7 +31,6 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
         Pathology,
         Patient,
         Reservation,
-        Treatment    
     ],
     synchronize: true,
     ssl: true
