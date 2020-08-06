@@ -9,18 +9,13 @@ export class MedicalProcedureRepository extends Repository<MedicalProcedure>{
    * Create a medical procedure and enter it into the database.
    * @param createMedicalProcedure 
    */
-  async createMedicalProcedure(
-    createMedicalProcedure: CreateMedicalProcedureDTO 
-  ): Promise<MedicalProcedure> {
+  async createMedicalProcedure(createMedicalProcedure: CreateMedicalProcedureDTO ): Promise<MedicalProcedure> {
     const { name: Name, description: Description, time: Time} = createMedicalProcedure;
-
     const procedure = new MedicalProcedure();
-
     procedure.name = Name;
     procedure.description = Description;
     procedure.time = Time;
     await procedure.save();
-
     return procedure;
   }
 

@@ -1,5 +1,6 @@
 import { IsNotEmpty, IsString, IsOptional, IsEnum, IsNumber } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
+import { ClinicalRecord } from 'src/clinical-records/clinical-records.entity';
 
 export class TreatmentDTO{
     /**
@@ -11,7 +12,7 @@ export class TreatmentDTO{
     })
     @IsNotEmpty()
     @IsString()
-    RecordId: string;
+    RecordId: ClinicalRecord;
     /**
      * Name of the treatment
      */

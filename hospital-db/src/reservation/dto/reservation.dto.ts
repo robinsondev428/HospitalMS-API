@@ -1,5 +1,7 @@
 import { IsDate, IsNotEmpty, IsString } from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
+import { Bed } from "src/beds/beds.entity";
+import { Patient } from "src/patient/patient.entity";
 
 export class ReservationDTO {
 
@@ -12,7 +14,7 @@ export class ReservationDTO {
     })
     @IsNotEmpty()
     @IsString()
-    PatientDni: string;
+    PatientDni: Patient;
 
     /**
      * UUID of the bed assigned to the reservation.
@@ -23,7 +25,7 @@ export class ReservationDTO {
     })
     @IsNotEmpty()
     @IsString()
-    BedID: string;
+    BedID: Bed;
 
     /**
      * Patient's admission date.

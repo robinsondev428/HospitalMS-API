@@ -22,21 +22,30 @@ export class MedicalProcedureController {
   getMedicalProcedureById(@Param('id') id: string): Promise<MedicalProcedure> {
     return this.procedureService.getMedicalProcedureById(id);
   }
-
+  /**
+   * Get all the medical procedure
+   */
   @ApiOperation({ summary: 'Get the list of all medical procedures.' })
   @ApiResponse({ status: 200, type: [MedicalProcedure] })
   @Get()
   getAllMedicalProcedures(): Promise<MedicalProcedure[]> {
     return this.procedureService.getAllMedicalProcedures();
   }
-
+  /**
+   * Create a new medical procedure
+   * @param createProcedureDTO data of the procedure
+   */
   @ApiOperation({ summary: 'Enter a new medical procedure into the database.' })
   @ApiResponse({ status: 201, type: MedicalProcedure })
   @Post()
   createMedicalProcedure(@Body()  createProcedureDTO: CreateMedicalProcedureDTO): Promise<MedicalProcedure> {
     return this.procedureService.createMedicalProcedure(createProcedureDTO);
   }
-
+  /**
+   * Update a procedure data
+   * @param id of the procedure
+   * @param updateProcedureDTO information of the procedure
+   */
   @ApiOperation({ summary: 'Modify the description or duration of a medical procedure.' })
   @ApiResponse({ status: 200, type: MedicalProcedure })
   @Patch('/:id/edit')
@@ -46,7 +55,10 @@ export class MedicalProcedureController {
   ): Promise<MedicalProcedure> {
     return this.procedureService.updateMedicalProcedure(id,updateProcedureDTO);
   }
-
+  /**
+   * delete a medical procedure
+   * @param id of the procedure
+   */
   @ApiOperation({ summary: 'Delete a medical procedure from the database.' })
   @ApiResponse({ status: 204 })
   @Delete('/:id')

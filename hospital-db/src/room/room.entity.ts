@@ -29,7 +29,9 @@ export class Room extends BaseEntity {
    */
   @Column()
   type: ITypeRoom;
-
+  /**
+   * One to many relation with bed
+   */
   @OneToMany(
     type=> Bed, 
     bed => bed.room_)

@@ -14,8 +14,8 @@ export class StaffService {
   ){}
   
   /**
-   * 
-   * @param dni 
+   * get one member
+   * @param dni of the member
    */
   async getStaffByDni(dni: string): Promise<Staff> {
     const staff = await this.staffRepository.findOne(dni);
@@ -27,23 +27,23 @@ export class StaffService {
   }
 
   /**
-   * 
+   * get all the members
    */
   async getAllStaff(): Promise<Staff[]> {
     return await this.staffRepository.getAllStaff();
   }
 
   /**
-   * 
-   * @param createStaffDTO 
+   * Create a new member
+   * @param createStaffDTO data of the new member
    */
   async createStaff(createStaffDTO: CreateStaffDTO): Promise<Staff> {
     return this.staffRepository.createStaff(createStaffDTO);
   }
 
   /**
-   * 
-   * @param dni 
+   * delete the member
+   * @param dni of the member
    */
   async deleteStaff(dni: string): Promise<void> {
     const result = await this.getStaffByDni(dni);
@@ -53,8 +53,11 @@ export class StaffService {
       await this.staffRepository.delete(dni);
     }
   }
-
-  // TODO:  Definir el DTO de modificación
+  /**
+   * Update the data for the staff
+   * @param dni of the member
+   * @param updateStaffDTO data from the member
+   */
   async updateStaff(dni: string, updateStaffDTO: UpdateStaffDTO): Promise<Staff> {
     const staff = await this.getStaffByDni(dni);
     return staff;

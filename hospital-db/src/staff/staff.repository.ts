@@ -11,7 +11,7 @@ export class StaffRepository extends Repository<Staff>{
   }
 
   /**
-   * 
+   * create a new member of the staff
    * @param createStaffDTO 
    */
   async createStaff( createStaffDTO: CreateStaffDTO) {
@@ -40,7 +40,7 @@ export class StaffRepository extends Repository<Staff>{
   }
 
   /**
-   * 
+   * Get all the member of the staff
    */
   async getAllStaff(): Promise<Staff[]> {
     const staff = await this.createQueryBuilder("staff").getMany();
@@ -48,13 +48,12 @@ export class StaffRepository extends Repository<Staff>{
   }
 
   /**
-   * 
-   * @param province 
-   * @param canton 
-   * @param district 
+   * Return the address
+   * @param province of the member
+   * @param canton of the member
+   * @param district of the member
    */
-  private async getAddress(province: string, canton: string, district: string): Promise<Address> {
-
+  private async getAddress(province: string, canton: string, district: string): Promise<Address> { 
     const addressRepository = this.connection.getRepository(Address);
     const address = await addressRepository
                       .createQueryBuilder("address")
