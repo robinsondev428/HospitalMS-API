@@ -42,9 +42,9 @@ export class BedsService {
     async updateBed(idBed: string, dataBed: BedDTO){
         const bed = await this.getBed(idBed);
         const { UCI, RoomID, EquipmentID} = dataBed;
-        bed.UCI = UCI;
+        bed.uci = UCI;
         bed.equipment = EquipmentID;
-        bed.room = RoomID;
+        bed.room_ = RoomID;
         return await bed.save();
     }
     /**
@@ -52,8 +52,8 @@ export class BedsService {
      * @param id id of the room
      */
     async updateRoomID(id:string){
-        const found = await this.bedRepository.findOne({where: {room: id}});
-        found.room = null;
+        const found = await this.bedRepository.findOne({where: {room_: id}});
+        found.room_ = null;
         return await found.save();
     }
 }

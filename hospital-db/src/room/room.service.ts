@@ -41,10 +41,10 @@ export class RoomService {
     async updateRoom(data: IRoomDTO, Id: string){
         const room = await this.getRoomById(Id);
         const {BedsQty, Floor, Name, Type} = data;
-        room.BedsQty = BedsQty;
-        room.Floor = Floor;
-        room.Name = Name;
-        room.Type = Type;
+        room.beds_qty = BedsQty;
+        room.floor = Floor;
+        room.name = Name;
+        room.type = Type;
         return await room.save();
     }
     /**

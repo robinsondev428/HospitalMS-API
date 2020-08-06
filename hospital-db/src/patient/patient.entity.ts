@@ -1,4 +1,5 @@
-import { BaseEntity, Entity, PrimaryColumn, Column, OneToOne, OneToMany, JoinColumn } from 'typeorm';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { BaseEntity, Entity, PrimaryColumn, Column, OneToOne, OneToMany, JoinColumn, ManyToOne } from 'typeorm';
 import { ISexType }  from './dto/type-sex.enum';
 import { type } from 'os';
 import { Address } from 'src/address/address.entity';
@@ -12,64 +13,65 @@ export class Patient extends BaseEntity {
   /**
    * Patient's Dni.
    */
-  @PrimaryColumn({length: 11})
-  Dni: string;
+  @PrimaryColumn({length: 255})
+  dni: string;
   
   /**
    * Password.
    */
   @Column({length:20})
-  Password: string;
+  password: string;
   
   /**
    * Patient first name.
    */
   @Column({length:30})
-  Name: string;
+  name: string;
   
   /**
    * Patient lastname.
    */
   @Column({length:50})
-  LastName: string;
+  lastname: string;
   
   /**
    * Day of Birth.
    */
   @Column()
-  DoB: Date;
+  dob: Date;
   
   /**
    * Patient sex.
    */
   @Column()
-  Sex: ISexType;
+  sex: ISexType;
   
   /**
    * Patient phone number.
    */
   @Column({length:15})
-  Phone: string;
+  phone: string;
   
   /**
    * Postal Code.
    */
-  @OneToOne(type => Address)
-  @JoinColumn()
-  address: Address;
+  @ManyToOne(
+    type => Address,
+    address => address.patients)
+  address_: Address;
   
   /**
    * Address detail.
    */
   @Column({length:255})
-  OtherSigns: string;
+  other_signs: string;
 
   /**
    * Reservation of a bed
    */
   @OneToMany(
     type => Reservation,
-    reservation => reservation.Patient)
+    reservation => reservation.patient_)
   reservations: Reservation
 
   /**
@@ -77,7 +79,7 @@ export class Patient extends BaseEntity {
    */
   @OneToMany(
     type => Pathology,
-    pathology => pathology.Patient
+    pathology => pathology.patient
   )
   pathologies: Pathology[];
     /**

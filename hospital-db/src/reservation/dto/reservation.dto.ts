@@ -2,16 +2,6 @@ import { IsDate, IsNotEmpty, IsString } from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
 
 export class ReservationDTO {
-    /**
-   * Reservation UUID code.
-   */
-    @ApiProperty({
-        example: 'Teltron',
-        description: 'Reservation UUID code.'
-    })
-    @IsNotEmpty()
-    @IsString()
-    ResID: string;
 
     /**
      * Dni of the patient making the reservation.

@@ -1,4 +1,5 @@
-import { BaseEntity, Entity, PrimaryColumn, Column, OneToMany, ManyToOne, JoinTable, ManyToMany } from 'typeorm';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { BaseEntity, Entity, Column, OneToMany, ManyToOne, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { type } from 'os';
 import { Room } from 'src/room/room.entity';
 import { MedicalEquipment } from '../medical-equipment/medical-equiment.entity';
@@ -10,23 +11,22 @@ export class Bed extends BaseEntity {
   /**
    * Bed UUID.
    */
-  @PrimaryColumn({length:36})
-  Id: string;
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
   /**
    * Indicates if it is an ICU bed.
    */
   @Column()
-  UCI: boolean;
+  uci: boolean;
 
   /**
    * Room in which the bed is located.
    */
   @ManyToOne(
     type => Room,
-    room => room.Beds
-  )
-  room: Room;
+    room => room.beds)
+  room_: Room;
 
   @ManyToMany(type=> MedicalEquipment)
   @JoinTable()
@@ -34,6 +34,6 @@ export class Bed extends BaseEntity {
 
   @OneToMany(
     type=> Reservation,
-    reservation => reservation.Bed)
+    reservation => reservation.bed_)
   reservation: Reservation[];
 }

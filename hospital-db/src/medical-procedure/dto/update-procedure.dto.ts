@@ -10,7 +10,7 @@ export class UpdateMedicalProcedureDTO {
     description: 'Description of the procedure'
   })
   @IsNotEmpty()
-  Description: string;
+  description: string;
   
   /**
    * Time spent in the procedure in minute
@@ -21,5 +21,5 @@ export class UpdateMedicalProcedureDTO {
   })
   @IsNotEmpty()
   @IsNumber()
-  Time: number;
+  time: number;
 }

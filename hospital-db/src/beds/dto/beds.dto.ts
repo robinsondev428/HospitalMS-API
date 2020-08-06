@@ -4,16 +4,6 @@ import { Room } from "src/room/room.entity";
 import { MedicalEquipment } from "src/medical-equipment/medical-equiment.entity";
 
 export class BedDTO {
-    /**
-    * Bed UUID.
-    */
-    @ApiProperty({
-        example: '1',
-        description: 'Bed UUID.'
-    })
-    @IsNotEmpty()
-    @IsString()
-    ID: string;
 
     /**
      * Indicates if it is an ICU bed.

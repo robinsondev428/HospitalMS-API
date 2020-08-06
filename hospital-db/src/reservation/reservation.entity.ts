@@ -1,4 +1,5 @@
-import { BaseEntity, Entity, PrimaryColumn, Column, ManyToOne, ManyToMany, JoinTable } from 'typeorm';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { BaseEntity, Entity, PrimaryColumn, Column, ManyToOne, ManyToMany, JoinTable, PrimaryGeneratedColumn } from 'typeorm';
 import { type } from 'os';
 import { Bed } from 'src/beds/beds.entity';
 import { Patient } from 'src/patient/patient.entity';
@@ -9,8 +10,8 @@ export class Reservation extends BaseEntity {
   /**
    * Reservation UUID code.
    */
-  @PrimaryColumn({ length: 36 })
-  ResID: string;
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
   /**
    * Dni of the patient making the reservation.
@@ -18,28 +19,34 @@ export class Reservation extends BaseEntity {
 
   @ManyToOne(
     type => Patient,
-    patient => patient.Dni,
+    patient => patient.dni,
     {onDelete:'CASCADE'}
   )
-  Patient: Patient;
+  patient_: Patient;
 
   /**
    * UUID of the bed assigned to the reservation.
    */
   @ManyToOne(
     type => Bed,
-    bed => bed.Id
+    bed => bed.id
   )
-  Bed: Bed;
+  bed_: Bed;
 
   /**
    * Patient's admission date.
    */
   @Column()
-  ArrivalDate: Date;
+  arrival_date: Date;
 
   /**
-   * 
+   * Patient's admission date.
+   */
+  @Column({nullable: true})
+  departure_date: Date;
+
+  /**
+   * List of procedures 
    */
   @ManyToMany( type => MedicalProcedure)
   @JoinTable()

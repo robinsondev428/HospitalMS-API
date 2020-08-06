@@ -11,9 +11,9 @@ export class PathologyRepository extends Repository<Pathology>{
     async createPathology(data: PathologyDTO){
         const { Description, Name, PatientDni} = data;
         const pathology = new Pathology();
-        pathology.Description = Description;
-        pathology.Name = Name;
-        pathology.Patient = PatientDni;
+        pathology.description = Description;
+        pathology.name = Name;
+        pathology.patient = PatientDni;
         return await pathology.save();
     }
 }

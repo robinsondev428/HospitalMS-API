@@ -60,11 +60,11 @@ export class MedicalProcedureService {
     id: string, 
     updateProcedureDTO: UpdateMedicalProcedureDTO
   ): Promise<MedicalProcedure> {
-    const  {Description, Time}  = updateProcedureDTO;
+    const  {description: Description, time: Time}  = updateProcedureDTO;
     const procedure = await this.getMedicalProcedureById(id);
 
-    procedure.Description = Description;
-    procedure.Time = Time;
+    procedure.description = Description;
+    procedure.time = Time;
     await procedure.save();
 
     return procedure;

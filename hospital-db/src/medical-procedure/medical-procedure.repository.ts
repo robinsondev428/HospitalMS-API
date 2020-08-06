@@ -1,7 +1,6 @@
 import { Repository, EntityRepository } from "typeorm";
 import { MedicalProcedure } from './medical-procedure.entity';
 import { CreateMedicalProcedureDTO} from './dto/create-procedure.dto';
-import { v1 as uuid } from "uuid";
 
 @EntityRepository(MedicalProcedure)
 export class MedicalProcedureRepository extends Repository<MedicalProcedure>{
@@ -13,14 +12,13 @@ export class MedicalProcedureRepository extends Repository<MedicalProcedure>{
   async createMedicalProcedure(
     createMedicalProcedure: CreateMedicalProcedureDTO 
   ): Promise<MedicalProcedure> {
-    const { Name, Description, Time} = createMedicalProcedure;
+    const { name: Name, description: Description, time: Time} = createMedicalProcedure;
 
     const procedure = new MedicalProcedure();
 
-    procedure.Id = uuid(); // Generate a uuid for the procedure.
-    procedure.Name = Name;
-    procedure.Description = Description;
-    procedure.Time = Time;
+    procedure.name = Name;
+    procedure.description = Description;
+    procedure.time = Time;
     await procedure.save();
 
     return procedure;

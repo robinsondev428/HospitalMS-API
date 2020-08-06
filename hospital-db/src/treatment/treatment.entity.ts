@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { BaseEntity, Entity, Column, ManyToOne } from 'typeorm';
 import { ClinicalRecord } from 'src/clinical-records/clinical-records.entity';
 
@@ -17,11 +18,11 @@ export class Treatment extends BaseEntity {
    * Name of the treatment
    */
   @Column({ length: 60 })
-  Name: string;
+  name: string;
 
   /**
    * Description of the treatment
    */
   @Column({ length: 255 })
-  Description: string;
+  description: string;
 }
