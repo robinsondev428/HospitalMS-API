@@ -14,6 +14,15 @@ export class StaffService {
     @InjectRepository(Staff)
     private staffRepository: StaffRepository,
   ){}
+
+  /**
+   * 
+   * @param username 
+   * @param password 
+   */
+  async login (username: string,password: string): Promise<void> {
+    const staff = this.staffRepository.findOne()
+  }
   
   /**
    * get one member
@@ -73,6 +82,15 @@ export class StaffService {
    */
   async updateStaff(dni: string, updateStaffDTO: UpdateStaffDTO): Promise<Staff> {
     const staff = await this.getStaffByDniRaw(dni);
+    const {name, lastname, username, phone, role} = updateStaffDTO;
+    
+    staff.name = name;
+    staff.lastname = lastname;
+    staff.username = username;
+    staff.phone = phone;
+    staff.role = role;
+    await staff.save();
+
     return staff;
   }
 

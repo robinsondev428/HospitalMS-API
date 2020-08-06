@@ -2,7 +2,6 @@
 import { BaseEntity, PrimaryColumn, Column, Entity, ManyToOne, OneToOne, JoinColumn, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Patient } from 'src/patient/patient.entity';
 import { MedicalProcedure } from 'src/medical-procedure/medical-procedure.entity';
-import { Treatment } from '../treatment/treatment.entity';
 @Entity()
 export class ClinicalRecord extends BaseEntity {
 
@@ -34,12 +33,6 @@ export class ClinicalRecord extends BaseEntity {
     {onDelete:'CASCADE'})
   patient: Patient;
   
-  /**
-   * one to many treatment
-   */
-  @OneToMany(
-    type => Treatment,
-    treatment => treatment.clinicalRecord
-  )
-  treatment: Treatment[];
+  @Column()
+  treatment: string;
 }

@@ -1,7 +1,7 @@
 import { IsNotEmpty, IsDate, IsString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
-export class CreateClinicalRecordDTO {
+export class UpdateClinicalRecordDTO {
   /**
    * Date the medical procedure was performed
    */
@@ -23,17 +23,6 @@ export class CreateClinicalRecordDTO {
   @IsNotEmpty()
   @IsString()
   procedure_id: string;
-  
-  /**
-   * National Identity Document (DNI) of the patient
-   */
-  @ApiProperty({
-    example: '1-2756-1922',
-    description: 'National Identity Document (DNI) of the patient.'
-  })
-  @IsNotEmpty()
-  @IsString()
-  patient_dni: string;
 
   /**
    * Prescribed medical treatment.
