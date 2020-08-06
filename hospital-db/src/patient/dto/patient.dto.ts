@@ -6,98 +6,21 @@ import { Pathology } from "src/pathology/pathology.entity";
 
 export class PatientDTO {
 
-    /**
-     * Patient first name.
-     */
-    @ApiProperty({
-        example: 'Teltron',
-        description: 'Patient first name.'
-    })
-    @IsNotEmpty()
-    @IsString()
-    Name: string;
+    dni: string;
 
-    /**
-     * Patient lastName.
-     */
-    @ApiProperty({
-        example: 'Teltron',
-        description: 'Patient lastName.'
-    })
-    @IsNotEmpty()
-    @IsString()
-    LastName: string;
+    name: string;
 
-    /**
-     * Day of Birth.
-     */
-    @ApiProperty({
-        example: 'Teltron',
-        description: 'Day of Birth.'
-    })
-    @IsNotEmpty()
-    @IsISO8601()
-    DoB: Date;
+    lastname: string;
 
-    /**
-     * Patient sex.
-     */
-    @ApiProperty({
-        example: ISexType.female,
-        description: 'Patient sex.'
-    })
-    @IsNotEmpty()
-    @IsEnum(ISexType)
-    Sex: ISexType;
+    age: number;
 
-    /**
-     * Patient phone number.
-     */
-    @ApiProperty({
-        example: 'Teltron',
-        description: ' Patient phone number.'
-    })
-    @IsNotEmpty()
-    @IsString()
-    Phone: string;
+    phone: string;
 
-    /**
-     * Postal Code.
-     */
-    @ApiProperty({
-        example: 'Teltron',
-        description: 'Postal Code.'
-    })
-    @IsNotEmpty()
-    @IsString()
-    address: Address;
+    province: string;
 
-    /**
-     * Address detail.
-     */
-    @ApiProperty({
-        example: 'Teltron',
-        description: 'Address detail.'
-    })
-    @IsNotEmpty()
-    @IsString()
-    OtherSigns: string;
-     /**
-     * password detail.
-     */
-    @ApiProperty({
-        example: 'Teltron',
-        description: 'password detail.'
-    })
-    @IsNotEmpty()
-    @IsString()
-    Password: string;
-    /**
-     * Pathologies of the patient
-     */
-    @ApiProperty({
-        example: 'Teltron',
-        description: 'Pathologies of the patient'
-    })
-    pathologies: Pathology[];
+    canton: string;
+
+    district: string;
+
+    other_signs: string;
 }
