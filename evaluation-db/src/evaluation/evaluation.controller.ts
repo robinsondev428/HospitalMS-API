@@ -2,10 +2,16 @@ import { Controller, Post, UsePipes, ValidationPipe, Body } from '@nestjs/common
 import { ApiTags, ApiBody, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { EvaluationService } from './evaluation.service';
 import { EvaluationDTO } from './evaluation.dto';
-
+/**
+ * Controller fro the evaluation
+ */
 @ApiTags('Evaluation')
 @Controller('evaluation')
 export class EvaluationController {
+    /**
+     * Constructor
+     * @param evaluationService controller service
+     */
     constructor(private readonly evaluationService:EvaluationService){}
 
     /**
