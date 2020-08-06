@@ -5,6 +5,7 @@ import { Staff } from './staff.entity';
 import { StaffRepository } from './staff.repository';
 import { CreateStaffDTO } from './dto/create-staff.dto';
 import { UpdateStaffDTO } from './dto/update-staff.dto';
+import { StaffDTO } from './dto/staff.dto';
 
 @Injectable()
 export class StaffService {
@@ -31,17 +32,17 @@ export class StaffService {
  * 
  * @param dni 
  */
-  async getStaffByDni(dni: string): Promise<any> {
+  async getStaffByDni(dni: string): Promise<StaffDTO> {
     const found = await this.getStaffByDniRaw(dni);
 
-    const result = await this.staffRepository.query(`select * from hsp_get_staff_summary('${dni}')`);
+    const result: StaffDTO[] = await this.staffRepository.query(`select * from hsp_get_staff_summary('${dni}')`);
     return result[0];
   }
 
   /**
    * get all the members
    */
-  async getAllStaff(): Promise<any[]> {
+  async getAllStaff(): Promise<StaffDTO[]> {
     return await this.staffRepository.getAllStaff();
   }
 

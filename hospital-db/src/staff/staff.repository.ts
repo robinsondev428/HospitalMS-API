@@ -3,6 +3,7 @@ import { Repository, EntityRepository, Connection } from "typeorm";
 import { Staff } from "./staff.entity";
 import { CreateStaffDTO } from "./dto/create-staff.dto";
 import { Address } from '../address/address.entity';
+import { StaffDTO } from "./dto/staff.dto";
 @EntityRepository(Staff)
 export class StaffRepository extends Repository<Staff>{
 
@@ -42,8 +43,8 @@ export class StaffRepository extends Repository<Staff>{
   /**
    * Get all the member of the staff
    */
-  async getAllStaff(): Promise<any[]> {
-    const staff = await this.query(`select * from get_all_staff_summary`);
+  async getAllStaff(): Promise<StaffDTO[]> {
+    const staff: StaffDTO[] = await this.query(`select * from get_all_staff_summary`);
     return staff;
   }
 

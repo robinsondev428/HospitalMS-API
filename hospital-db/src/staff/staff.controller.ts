@@ -3,6 +3,7 @@ import { StaffService } from './staff.service';
 import { Staff } from './staff.entity';
 import { CreateStaffDTO } from './dto/create-staff.dto';
 import { UpdateStaffDTO } from './dto/update-staff.dto';
+import { StaffDTO } from './dto/staff.dto';
 
 @Controller('staff')
 export class StaffController {
@@ -17,14 +18,14 @@ export class StaffController {
    * @param dni of the staff
    */
   @Get('/:dni')
-  getStaffByDni(@Param('dni') dni: string): Promise<any> {
+  getStaffByDni(@Param('dni') dni: string): Promise<StaffDTO> {
     return this.staffService.getStaffByDni(dni);
   }
   /**
    * Get all the staff
    */
   @Get()
-  getAllStaff(): Promise<any[]> {
+  getAllStaff(): Promise<StaffDTO[]> {
     return this.staffService.getAllStaff();
   }
   /**
