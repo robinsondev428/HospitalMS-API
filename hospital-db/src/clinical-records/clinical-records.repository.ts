@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/camelcase */
 import { Repository, EntityRepository, Connection } from "typeorm";
 import { ClinicalRecord } from './clinical-records.entity';
 import { CreateClinicalRecordDTO } from "./dto/create-clinicalRecord.dto";
@@ -16,19 +17,20 @@ export class ClinicalRecordsRepository extends Repository<ClinicalRecord>{
    */
   async createClinicalRecord(createRecordDTO: CreateClinicalRecordDTO): Promise<ClinicalRecord> {
     
-    const {Date, ProcedureId, PatientDni} = createRecordDTO;
+    const {date, procedure_id, patient_dni, treatment} = createRecordDTO;
 
     // Get the procedure and the patient.
-    const procedure = await this.ExistsProcedure(ProcedureId);
-    const patient = await this.ExistsPatient(PatientDni);
+    const procedure = await this.ExistsProcedure(procedure_id);
+    const patient = await this.ExistsPatient(patient_dni);
     
 
     // Set record id, date, patient and procedure
     const record = new ClinicalRecord();
 
-    record.date = Date;
+    record.date = date;
     record.procedure = procedure;
     record.patient = patient;
+    record.treatment = treatment;
     await record.save(); // Save record
 
     return record;

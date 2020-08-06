@@ -11,7 +11,6 @@ import { PathologyModule } from './pathology/pathology.module';
 import { PatientModule } from './patient/patient.module';
 import { ReservationModule } from './reservation/reservation.module';
 import { AddressModule } from './address/address.module';
-import { TreatmentModule } from './treatment/treatment.module';
 
 @Module({
   imports: [
@@ -26,7 +25,6 @@ import { TreatmentModule } from './treatment/treatment.module';
     PatientModule,
     ReservationModule,
     AddressModule,
-    TreatmentModule
     ],
   controllers: [],
   providers: [],

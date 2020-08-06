@@ -4,6 +4,7 @@ import { ClinicalRecordsService } from './clinical-records.service';
 import { CreateClinicalRecordDTO } from './dto/create-clinicalRecord.dto';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { ClinicalRecord } from './clinical-records.entity';
+import { UpdateClinicalRecordDTO } from './dto/update-clinicalRecord.dto';
 
 @ApiTags('Clinical Records')
 @Controller('clinical-records')
@@ -51,12 +52,12 @@ export class ClinicalRecordsController {
    */
   @ApiOperation({ summary: 'Edit the medical procedure of a clinical record' })
   @ApiResponse({ status: 200, type: ClinicalRecord })
-  @Patch('/:id/procedure')
+  @Patch('/:id/edit')
   updateRecordProcedure(
     @Param('id') id: string,
-    @Body('procedureId') procedureId: string,
+    @Body() updateRecordDTO: UpdateClinicalRecordDTO,
   ) {
-    return this.clinicalRecordService.updateRecordProcedure(id, procedureId);
+    return this.clinicalRecordService.updateRecordProcedure(id, updateRecordDTO);
   }
   /**
    * Delete a clinical record
