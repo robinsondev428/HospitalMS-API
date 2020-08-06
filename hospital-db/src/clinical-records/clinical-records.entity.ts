@@ -1,4 +1,5 @@
-import { BaseEntity, PrimaryColumn, Column, Entity, ManyToOne, OneToOne, JoinColumn, OneToMany } from 'typeorm';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { BaseEntity, PrimaryColumn, Column, Entity, ManyToOne, OneToOne, JoinColumn, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Patient } from 'src/patient/patient.entity';
 import { MedicalProcedure } from 'src/medical-procedure/medical-procedure.entity';
 import { Treatment } from '../treatment/treatment.entity';
@@ -8,7 +9,7 @@ export class ClinicalRecord extends BaseEntity {
   /**
    * Registration code.
    */
-  @PrimaryColumn({length:36})
+  @PrimaryGeneratedColumn("uuid")
   id: string;
 
   /**

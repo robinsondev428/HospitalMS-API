@@ -9,9 +9,9 @@ export class MedicalEquipmentRepository extends Repository<MedicalEquipment>{
      * @param dataEQ data of the medical equipment
      */
     async createMedicalEquipment(dataEQ: MedicalEquipmentDTO){
-        const {Id, Name, Provider, Qty} = dataEQ;
+        const {Name, Provider, Qty} = dataEQ;
         const equipment = new MedicalEquipment;
-        equipment.id = Id;
+        
         equipment.name = Name;
         equipment.provider = Provider;
         equipment.qty = Qty;

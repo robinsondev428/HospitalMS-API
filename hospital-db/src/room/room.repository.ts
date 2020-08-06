@@ -12,7 +12,7 @@ export class RoomRepository extends Repository<Room>{
         const room = new Room();
         room.id = ID;
         room.name = Name;
-        room.bedsQty = BedsQty;
+        room.beds_qty = BedsQty;
         room.floor = Floor;
         room.type = Type;
         console.log('newRoom', room);

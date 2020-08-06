@@ -32,7 +32,7 @@ export class PatientService {
             const patient = await this.getPatient(dniPatient);
             const { DoB, address, OtherSigns, LastName, Name, Phone, Sex, pathologies} = dataPatient;
             patient.dob = DoB;
-            patient.address = address;
+            patient.address_ = address;
             patient.other_signs = OtherSigns;
             patient.lastname = LastName;
             patient.name = Name;

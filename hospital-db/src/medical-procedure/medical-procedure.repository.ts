@@ -1,7 +1,6 @@
 import { Repository, EntityRepository } from "typeorm";
 import { MedicalProcedure } from './medical-procedure.entity';
 import { CreateMedicalProcedureDTO} from './dto/create-procedure.dto';
-import { v1 as uuid } from "uuid";
 
 @EntityRepository(MedicalProcedure)
 export class MedicalProcedureRepository extends Repository<MedicalProcedure>{
@@ -17,7 +16,6 @@ export class MedicalProcedureRepository extends Repository<MedicalProcedure>{
 
     const procedure = new MedicalProcedure();
 
-    procedure.id = uuid(); // Generate a uuid for the procedure.
     procedure.name = Name;
     procedure.description = Description;
     procedure.time = Time;
