@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/camelcase */
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { ReservationRepository } from './reservation.repository';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -16,6 +17,12 @@ export class ReservationService {
         const finish_date = this.reservationRepository.query(`call hfx_calculate_departure_date(${data.ArrivalDate}, ${data}) `)
         return await this.reservationRepository.createReservation(data, finish_date);
     }
+<<<<<<< HEAD
+=======
+    getDays(patientDNI){
+        //const procedur = this.procedureRepository;
+    }
+>>>>>>> f7b6cf3d0d078f154bca60a3356cd282035e667c
     /**
      * Get all the reservation
      */
