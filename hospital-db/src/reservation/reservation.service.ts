@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/camelcase */
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { ReservationRepository } from './reservation.repository';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -9,7 +10,6 @@ export class ReservationService {
     constructor(
         @InjectRepository(ReservationRepository)
         private reservationRepository: ReservationRepository,
-        private procedureRepository: MedicalProcedureRepository
     ){}
     /**
      * Create a new Reservation
@@ -20,7 +20,7 @@ export class ReservationService {
         return await this.reservationRepository.createReservation(data, finish_date);
     }
     getDays(patientDNI){
-        const procedur = this.procedureRepository;
+        //const procedur = this.procedureRepository;
     }
     /**
      * Get all the reservation

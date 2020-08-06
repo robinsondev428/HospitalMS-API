@@ -1,39 +1,37 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { PathologyRepository } from './pathology.repository';
 import { InjectRepository } from '@nestjs/typeorm';
+import { PathologyDTO } from './dto/pathologyDTO';
 
 @Injectable()
 export class PathologyService {
-    constructor(
-        @InjectRepository(PathologyRepository)
-        private pathologyRepository: PathologyRepository
-    ){}
-    /**
-     * Get all the pathologies
-     */
-    async getAllPathologies(){
-        return await this.pathologyRepository.find();
-    }
-    /**
-     * Get one pathology by name
-     * @param NameP name of the pathology
-     */
-    async getOnePathologyByName(NameP: string){
-        const found = await this.pathologyRepository.findOne({where: {'name':NameP }})
-        if(!found){
-            throw new NotFoundException(`La patología con el nombre ${NameP} no existe`);
-        }
-        return found;
-    }
-    /**
-     * Get pathology by id of the patient
-     * @param patientID id of the patient
-     */
-    async getPathologyByPatient(patientID: string){
-        const found = await this.pathologyRepository.findOne(patientID)
-        if(!found){
-            throw new NotFoundException(`La patología con el id del paciente ${patientID} no existe`);
-        }
-        return found;
-    }
+  constructor(
+    @InjectRepository(PathologyRepository)
+    private pathologyRepository: PathologyRepository,
+  ) {}
+
+  /**
+   * Assign a list of pathologies to a patient.
+   * @param dni
+   * @param pathologies
+   */
+  async assignPathologies(
+    dni: string,
+    pathologies: PathologyDTO[],
+  ): Promise<PathologyDTO[]> {
+    return await this.pathologyRepository.assingPathologies(dni, pathologies);
+  }
+
+  /**
+   * Get the list of pathologies of a patient.
+   * @param dni 
+   */
+  async getPatientPathologies(dni: string): Promise<PathologyDTO[]> {
+    const pathologies: PathologyDTO[] = await this.pathologyRepository
+      .createQueryBuilder('pathology')
+      .where(`pathology."patientDni" = :dni`, { dni: dni })
+      .getMany();
+
+    return pathologies;
+  }
 }

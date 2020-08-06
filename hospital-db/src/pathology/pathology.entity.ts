@@ -20,13 +20,13 @@ export class Pathology extends BaseEntity {
   /**
    * Pathology name.
    */
-  @Column({length:60})
+  @PrimaryColumn({length:60})
   name: string;
   
   /**
    * Pathology treatment.
    */
   @Column({length:255})
-  description: string;
+  treatment: string;
 
 }
