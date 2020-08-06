@@ -17,14 +17,14 @@ export class StaffController {
    * @param dni of the staff
    */
   @Get('/:dni')
-  getStaffByDni(@Param('dni') dni: string): Promise<Staff> {
+  getStaffByDni(@Param('dni') dni: string): Promise<any> {
     return this.staffService.getStaffByDni(dni);
   }
   /**
    * Get all the staff
    */
   @Get()
-  getAllStaff(): Promise<Staff[]> {
+  getAllStaff(): Promise<any[]> {
     return this.staffService.getAllStaff();
   }
   /**

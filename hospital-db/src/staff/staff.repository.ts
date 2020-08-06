@@ -42,8 +42,8 @@ export class StaffRepository extends Repository<Staff>{
   /**
    * Get all the member of the staff
    */
-  async getAllStaff(): Promise<Staff[]> {
-    const staff = await this.createQueryBuilder("staff").getMany();
+  async getAllStaff(): Promise<any[]> {
+    const staff = await this.query(`select * from get_all_staff_summary`);
     return staff;
   }
 

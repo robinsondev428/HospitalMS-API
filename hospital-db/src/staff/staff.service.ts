@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Staff } from './staff.entity';
@@ -17,7 +18,7 @@ export class StaffService {
    * get one member
    * @param dni of the member
    */
-  async getStaffByDni(dni: string): Promise<Staff> {
+  async getStaffByDniRaw(dni: string): Promise<Staff> {
     const staff = await this.staffRepository.findOne(dni);
     if (!staff) {
       const errorMessage = `Staff with DNI ${dni} not found`;
@@ -26,10 +27,21 @@ export class StaffService {
     return staff;
   }
 
+/**
+ * 
+ * @param dni 
+ */
+  async getStaffByDni(dni: string): Promise<any> {
+    const found = await this.getStaffByDniRaw(dni);
+
+    const result = await this.staffRepository.query(`select * from hsp_get_staff_summary('${dni}')`);
+    return result[0];
+  }
+
   /**
    * get all the members
    */
-  async getAllStaff(): Promise<Staff[]> {
+  async getAllStaff(): Promise<any[]> {
     return await this.staffRepository.getAllStaff();
   }
 
@@ -46,7 +58,7 @@ export class StaffService {
    * @param dni of the member
    */
   async deleteStaff(dni: string): Promise<void> {
-    const result = await this.getStaffByDni(dni);
+    const result = await this.getStaffByDniRaw(dni);
 
     // There is already a guarantee that the entity exists in the database
     if (result) {
@@ -59,7 +71,7 @@ export class StaffService {
    * @param updateStaffDTO data from the member
    */
   async updateStaff(dni: string, updateStaffDTO: UpdateStaffDTO): Promise<Staff> {
-    const staff = await this.getStaffByDni(dni);
+    const staff = await this.getStaffByDniRaw(dni);
     return staff;
   }
 
