@@ -1,5 +1,8 @@
-import { Controller, Get } from '@nestjs/common';
-import { AddressService } from './address.service';
+import { Controller} from '@nestjs/common';
 
+/**
+ * controller for the address
+ */
 @Controller('address')
-export class AddressController {}
+export class AddressController {
+}

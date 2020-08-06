@@ -35,7 +35,7 @@ export class ClinicalRecord extends BaseEntity {
   patient: Patient;
   
   /**
-   * 
+   * one to many treatment
    */
   @OneToMany(
     type => Treatment,

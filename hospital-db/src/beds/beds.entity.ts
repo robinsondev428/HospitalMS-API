@@ -27,11 +27,15 @@ export class Bed extends BaseEntity {
     type => Room,
     room => room.beds)
   room_: Room;
-
+  /**
+   * Many to many relation with the medical equipment
+   */
   @ManyToMany(type=> MedicalEquipment)
   @JoinTable()
   equipment: MedicalEquipment[];
-
+  /**
+   * One to many relation with a reservation
+   */
   @OneToMany(
     type=> Reservation,
     reservation => reservation.bed_)

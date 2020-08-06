@@ -29,11 +29,16 @@ export class Address extends BaseEntity {
   @Column({ length: 15 })
   district: string;
 
+  /**
+   * One to many relation with the staff
+   */
   @OneToMany(
     type => Staff,
     staff  => staff.address)
   staff: Staff[];
-
+  /**
+   * One to many relation with the patients
+   */
   @OneToMany(
     type => Patient,
     patient => patient.address_)

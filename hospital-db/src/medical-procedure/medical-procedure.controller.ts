@@ -7,9 +7,15 @@ import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 
 @Controller('medical-procedure')
 export class MedicalProcedureController {
-
+  /**
+   * first method
+   * @param procedureService procedure service controller
+   */
   constructor(private procedureService: MedicalProcedureService) {}
-
+  /**
+   * get one medical procedure by id
+   * @param id of the medical procedure
+   */
   @ApiOperation({ summary: 'Get the summary of a medical procedure given its id.' })
   @ApiResponse({ status: 200, type: MedicalProcedure })
   @Get('/:id')

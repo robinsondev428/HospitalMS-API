@@ -1,7 +1,9 @@
 import { Repository, EntityRepository } from 'typeorm';
 import { Bed } from './beds.entity';
 import { BedDTO } from './dto/beds.dto';
-
+/**
+ * repository for the bed
+ */
 @EntityRepository(Bed)
 export class BedsRepository extends Repository<Bed> {
   /**
