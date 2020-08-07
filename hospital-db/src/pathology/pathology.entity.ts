@@ -1,4 +1,5 @@
-import { BaseEntity, Entity, PrimaryColumn, Column, OneToMany, ManyToOne } from 'typeorm';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { BaseEntity, Entity, PrimaryColumn, Column, ManyToOne } from 'typeorm';
 import { type } from 'os';
 import { Patient } from 'src/patient/patient.entity';
 

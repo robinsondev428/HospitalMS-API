@@ -23,4 +23,6 @@ export class PatientDTO {
     district: string;
 
     other_signs: string;
+
+    sex:ISexType;
 }
