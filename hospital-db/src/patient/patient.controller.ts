@@ -4,6 +4,7 @@ import { ApiTags, ApiOperation, ApiResponse, ApiBody, ApiParam, ApiNotFoundRespo
 import { PatientService } from './patient.service';
 import { PatientDTO } from './dto/patient.dto';
 import { CreatePatientDTO } from './dto/create-patient.dto';
+import { Patient } from './patient.entity';
 
 @ApiTags('Patient')
 @Controller('patient')
@@ -17,6 +18,17 @@ export class PatientController {
     @ApiResponse({ status: 200, type: [PatientDTO] })
     getPatients(){
         return this.patientService.getAllPatient();
+    }
+
+    /**
+     * 
+     */
+    @Post('/login')
+    login(
+        @Body('dni') dni: string,
+        @Body('password') password: string
+    ): Promise<Patient> {
+        return this.patientService.login(dni,password);
     }
 
     /**

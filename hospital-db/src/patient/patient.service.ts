@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/camelcase */
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
 import { PatientRepository } from './patient.repository';
 import { InjectRepository } from '@nestjs/typeorm';
 import { PatientDTO } from './dto/patient.dto';
 import { isNull } from 'util';
 import { CreatePatientDTO } from './dto/create-patient.dto';
+import { Patient } from './patient.entity';
 
 @Injectable()
 export class PatientService {
@@ -12,6 +13,29 @@ export class PatientService {
     @InjectRepository(PatientRepository)
     private patientRepository: PatientRepository,
   ) {}
+
+  /**
+   * 
+   * @param dni 
+   * @param password 
+   */
+  async login(dni: string, password: string): Promise<Patient> {
+    const patient = await this.patientRepository.findOne(dni);
+    
+    if(!patient){
+      const errorMessage = 'Patient Not found';
+      throw new NotFoundException(errorMessage);
+    }
+
+    if(patient.password !== password){
+      const errorMessage = 'Incorrect Password';
+      throw new BadRequestException(errorMessage);
+    }
+
+    patient.password = "xxxx";
+    return patient;
+  }
+
   /**
    * Create a new patient
    * @param createPatientDTO data for the new patient
