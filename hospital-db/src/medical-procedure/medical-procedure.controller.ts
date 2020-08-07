@@ -48,7 +48,7 @@ export class MedicalProcedureController {
    */
   @ApiOperation({ summary: 'Modify the description or duration of a medical procedure.' })
   @ApiResponse({ status: 200, type: MedicalProcedure })
-  @Patch('/:id/edit')
+  @Patch('/edit/:id')
   updateMedicalProcedure(
     @Param('id') id: string,
     @Body() updateProcedureDTO: UpdateMedicalProcedureDTO,

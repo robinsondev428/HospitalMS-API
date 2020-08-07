@@ -2,6 +2,7 @@ import { Controller, Get, Post, UsePipes, ValidationPipe, Body, Patch, Param } f
 import { MedicalEquipmentService } from './medical-equipment.service';
 import { MedicalEquipmentDTO } from './dto/medicalEquimentDTO';
 import { ApiOperation, ApiResponse, ApiBody, ApiParam, ApiNotFoundResponse, ApiTags } from '@nestjs/swagger';
+import { MedicalUpdateEquipmentDTO } from './dto/medicalUpdateDTO';
 
 @Controller('medical-equipment')
 @ApiTags('Equipment')
@@ -38,12 +39,12 @@ export class MedicalEquipmentController {
      * @param data of the patient
      */
     @Patch('/:id')
-    @ApiBody({ required: true, type: MedicalEquipmentDTO})
+    @ApiBody({ required: true, type: MedicalUpdateEquipmentDTO})
     @ApiParam({name:'id'})
     @ApiOperation({summary: 'Actualiza los campos de un equipo medico enviado a través de la solicitud (merge). Si el equipo medico no existe, retorna error'})
-    @ApiResponse({ status: 200, type: MedicalEquipmentDTO })
+    @ApiResponse({ status: 200, type: MedicalUpdateEquipmentDTO })
     @ApiNotFoundResponse({ description: 'No se encuentra el equipo medico' })
-    updatePatient(@Param('id') EquimentDni: string, @Body() data: MedicalEquipmentDTO){
+    updatePatient(@Param('id') EquimentDni: string, @Body() data: MedicalUpdateEquipmentDTO){
         return this.equipmentService.updateEquipment(EquimentDni, data);
     }
 }

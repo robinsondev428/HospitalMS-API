@@ -21,7 +21,7 @@ export class RoomService {
      */
     async getRoomById(Id: string){
         const found = await this.roomRepository.findOne(Id);
-        if(found){
+        if(!found){
             throw new NotFoundException(`El salon con el id ${Id} no existe`);
         }
         return found;

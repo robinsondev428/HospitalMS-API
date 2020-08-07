@@ -2,6 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { MedicalEquipmentRepository } from './medical-equiment.repository';
 import { InjectRepository } from '@nestjs/typeorm';
 import { MedicalEquipmentDTO } from './dto/medicalEquimentDTO';
+import { MedicalUpdateEquipmentDTO } from './dto/medicalUpdateDTO';
 
 @Injectable()
 export class MedicalEquipmentService {
@@ -37,10 +38,9 @@ export class MedicalEquipmentService {
      * @param idEq id of the equipment
      * @param dataEq data of the equipment
      */
-    async updateEquipment(idEq: string, dataEq: MedicalEquipmentDTO){
+    async updateEquipment(idEq: string, dataEq: MedicalUpdateEquipmentDTO){
         const equipment = await this.getOneEquipment(idEq);
-        const { Name, Provider, Qty} = dataEq;
-        equipment.name = Name;
+        const { Provider, Qty} = dataEq;
         equipment.provider = Provider;
         equipment.qty = Qty;
         return await equipment.save();

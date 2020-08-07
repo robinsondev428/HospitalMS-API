@@ -41,7 +41,7 @@ export class StaffController {
    * @param dni of the staff
    * @param updateStaffDTO data of the member of the staff
    */
-  @Patch('/:dni/edit')
+  @Patch('/edit/:dni')
   editStaff(
     @Param('dni') dni: string,
     @Body() updateStaffDTO: UpdateStaffDTO,
