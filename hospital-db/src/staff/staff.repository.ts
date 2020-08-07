@@ -16,17 +16,15 @@ export class StaffRepository extends Repository<Staff>{
    * @param createStaffDTO 
    */
   async createStaff( createStaffDTO: CreateStaffDTO) {
-    const {dni, name, lastname, dob, username, password, otherSigns, phone, role, startDate, province, canton, district} = createStaffDTO;
+    const {password, username, dni, name, lastname, dob, otherSigns, phone, role, startDate, province, canton, district} = createStaffDTO;
     const staff = new Staff();
 
     staff.dni = dni;
     staff.name = name;
     staff.lastname = lastname;
     staff.dob = dob;
-
-    staff.username = username;
     staff.password = password;
-
+    staff.username = username;
     staff.address = await this.getAddress(province,canton,district);
 
     staff.other_signs = otherSigns;

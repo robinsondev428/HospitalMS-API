@@ -17,6 +17,16 @@ export class BedsController {
         return this.bedService.getBeds();
     }
     /**
+     * Get all the Beds
+     */
+    @Get('eq/:id')
+    @ApiParam({name:'id'})
+    @ApiOperation({ summary: 'Obtener la información de las equipos de acuerdo al id de la cama' })
+    @ApiResponse({ status: 200 })
+    getEquipmentByBed(@Param() idBed: string){
+        return this.bedService.getEquipmentByBeds(idBed);
+    }
+    /**
      * Create a new bed
      * @param data data of the bed
      */
@@ -26,7 +36,7 @@ export class BedsController {
     @ApiResponse({ status: 201, type: BedDTO })
     @UsePipes(ValidationPipe)
     createBed(@Body() data: BedDTO){
-        return this.createBed(data);
+        return this.bedService.createBed(data);
     }
     /**
      * Update the bed attribute

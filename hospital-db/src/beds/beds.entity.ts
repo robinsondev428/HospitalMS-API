@@ -32,7 +32,7 @@ export class Bed extends BaseEntity {
    */
   @ManyToMany(type=> MedicalEquipment)
   @JoinTable()
-  equipment: MedicalEquipment[];
+  equipment_: MedicalEquipment[];
   /**
    * One to many relation with a reservation
    */

@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Post, Body, Patch, Delete } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, Patch, Delete, ValidationPipe, UsePipes } from '@nestjs/common';
 import { StaffService } from './staff.service';
 import { Staff } from './staff.entity';
 import { CreateStaffDTO } from './dto/create-staff.dto';
@@ -33,6 +33,7 @@ export class StaffController {
    * @param createStaffDTO data of the staff
    */
   @Post()
+  @UsePipes(ValidationPipe)
   createStaff(@Body() createStaffDTO: CreateStaffDTO): Promise<Staff> {
     return this.staffService.createStaff(createStaffDTO);
   }

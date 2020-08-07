@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsNotEmpty, IsString, IsDate, IsEnum } from "class-validator";
+import { IsNotEmpty, IsString, IsDate, IsEnum, IsOptional } from "class-validator";
 import { IRoleType } from "./type-role.enum";
 
 export class CreateStaffDTO {
@@ -21,7 +21,7 @@ export class CreateStaffDTO {
     example: 'carlos.perez',
     description: 'Employee username.',
   })
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   username: string;
 
@@ -32,7 +32,7 @@ export class CreateStaffDTO {
     example: 'X-{//_78?wV',
     description: 'Employee password.',
   })
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   password: string;
 
@@ -66,7 +66,6 @@ export class CreateStaffDTO {
     description: 'Date of birth.',
   })
   @IsNotEmpty()
-  @IsDate()
   dob: Date;
 
   /**
@@ -124,7 +123,6 @@ export class CreateStaffDTO {
     description: 'Date of admission as a hospital worker.',
   })
   @IsNotEmpty()
-  @IsDate()
   startDate: Date;
 
   /**

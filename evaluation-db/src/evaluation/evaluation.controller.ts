@@ -1,5 +1,5 @@
-import { Controller, Post, UsePipes, ValidationPipe, Body } from '@nestjs/common';
-import { ApiTags, ApiBody, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { Controller, Post, UsePipes, ValidationPipe, Body, Get, Param } from '@nestjs/common';
+import { ApiTags, ApiBody, ApiOperation, ApiResponse, ApiParam } from '@nestjs/swagger';
 import { EvaluationService } from './evaluation.service';
 import { EvaluationDTO } from './evaluation.dto';
 /**
@@ -27,4 +27,37 @@ export class EvaluationController {
         const result = await this.evaluationService.createEvaluation(data);
         return result;
     }
+    /**
+   * Get one staff by dni
+   * @param dni of the staff
+   */
+  @Get('punctuality/:points')
+  @ApiParam({name:'points'})
+  getStaffByDni(@Param('points') points: number) {
+    return this.evaluationService.getEvaluationByPunctuality(points);
+  }
+    /**
+   * Get one staff by dni
+   * @param dni of the staff
+   */
+  @Get('treatment/:points')
+  @ApiParam({name:'points'})
+  getByTreatment(@Param('points') points: number) {
+    return this.evaluationService.getEvaluationByTreatment(points);
+  }
+    /**
+   * Get one staff by dni
+   * @param dni of the staff
+   */
+  @Get('clean/')
+  getByClean() {
+    return this.evaluationService.getEvaluationByClean();
+  }
+    /**
+   * Get all the evaluation
+   */
+  @Get()
+  getAll() {
+    return this.evaluationService.getAll();
+  }
 }

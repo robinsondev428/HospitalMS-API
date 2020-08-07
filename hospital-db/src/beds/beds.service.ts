@@ -20,7 +20,29 @@ export class BedsService {
      * Get the beds
      */
     async getBeds(){
-        return await this.bedRepository.find();
+        const beds=  await this.bedRepository.query(`select * from bed`);
+        // console.log('beds', beds);
+        return beds;
+    }
+    /**
+     * Get the beds
+     */
+    async getEquipmentByBeds(id:string){
+        console.log('id', id);
+        const equipment=  await this.bedRepository.query(`select * from bed_equipment_medical_equipment where "bed_id"='${id['id']}';`);
+        const tableEquipment = await this.bedRepository.query(`
+        SELECT
+            b.id,
+            m.name
+        FROM
+            bed b
+        INNER JOIN bed_equipment_medical_equipment p 
+            ON p.bed_id = b.id
+        INNER JOIN medical_equipment m 
+            ON p.medical_equipment_id = m.id
+        where b.id='${id['id']}'`)
+        console.log('equipment', tableEquipment);
+        return tableEquipment;
     }
     /**
      * Get a bed
@@ -29,7 +51,7 @@ export class BedsService {
     async getBed(id: string){
         const found = await this.bedRepository.findOne(id);
         console.log('found bed', found);
-        if(found){
+        if(!found){
             throw new NotFoundException();
         }
         return found;
@@ -43,7 +65,7 @@ export class BedsService {
         const bed = await this.getBed(idBed);
         const { UCI, RoomID, EquipmentID} = dataBed;
         bed.uci = UCI;
-        bed.equipment = EquipmentID;
+        bed.equipment_ = EquipmentID;
         bed.room_ = RoomID;
         return await bed.save();
     }

@@ -15,7 +15,7 @@ export class BedsRepository extends Repository<Bed> {
 
     bed.uci = UCI;
     bed.room_ = RoomID;
-    bed.equipment = EquipmentID;
+    bed.equipment_ = EquipmentID;
     console.log('new Bed', bed);
     return await bed.save();
   }
