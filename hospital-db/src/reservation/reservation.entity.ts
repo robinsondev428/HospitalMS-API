@@ -50,5 +50,5 @@ export class Reservation extends BaseEntity {
    */
   @ManyToMany( type => MedicalProcedure)
   @JoinTable()
-  procedures: MedicalProcedure[];
+  procedures_: MedicalProcedure[];
 }

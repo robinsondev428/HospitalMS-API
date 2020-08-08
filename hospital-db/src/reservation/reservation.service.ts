@@ -14,8 +14,7 @@ export class ReservationService {
      * @param data of a reservation
      */
     async createReservation(data: ReservationDTO){
-        const finish_date = this.reservationRepository.query(`call hfx_calculate_departure_date(${data.ArrivalDate}, ${data}) `)
-        return await this.reservationRepository.createReservation(data, finish_date);
+        return await this.reservationRepository.createReservation(data);
     }
     /**
      * Get all the reservation
@@ -36,14 +35,34 @@ export class ReservationService {
      * @param id of the reservation
      */
     async updateReservation(data: ReservationDTO, id:string){
-        const {ArrivalDate, BedID, PatientDni} = data;
+        const {ArrivalDate, Procedures, PatientDni,} = data;
         const found = await this.reservationRepository.findOne(id);
         if(!found){
             throw new NotFoundException(`La reservation con el id ${id} no existe`);
         }
         found.arrival_date = ArrivalDate;
-        found.bed_ = BedID;
+        found.procedures_ = Procedures;
         found.patient_ = PatientDni;
+
         return await found.save();
+    }
+    /**
+     * Get the procedure
+     */
+    async getProcedureByReservation(id:string){
+        console.log('id', id);
+        const tableProcedure = await this.reservationRepository.query(`
+        SELECT
+            r.id,
+            m.name
+        FROM
+            reservation r 
+        INNER JOIN reservation_procedures_medical_procedure p 
+            ON p.reservation_id = r.id 
+        INNER JOIN medical_procedure m 
+            ON p.medical_procedure_id = m.id
+        where r.id='${id['id']}'`)
+        console.log('equipment', tableProcedure);
+        return tableProcedure;
     }
 }

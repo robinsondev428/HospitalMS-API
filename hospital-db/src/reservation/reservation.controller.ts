@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Controller, Get, Param, Post, Body, Patch, Delete } from '@nestjs/common';
 import { ReservationService } from './reservation.service';
 import { ReservationDTO } from './dto/reservation.dto';

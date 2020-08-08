@@ -2,6 +2,7 @@ import { IsDate, IsNotEmpty, IsString } from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
 import { Bed } from "src/beds/beds.entity";
 import { Patient } from "src/patient/patient.entity";
+import { MedicalProcedure } from "src/medical-procedure/medical-procedure.entity";
 
 export class ReservationDTO {
 
@@ -37,4 +38,13 @@ export class ReservationDTO {
     @IsNotEmpty()
     @IsDate()
     ArrivalDate: Date;
+
+    /**
+     * Patient's medical Procedure List
+     */
+    @ApiProperty({
+        description: 'Reservation procedures list'
+    })
+    @IsNotEmpty()
+    Procedures: MedicalProcedure[];
 }

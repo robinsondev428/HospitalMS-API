@@ -29,7 +29,6 @@ export class BedsService {
      */
     async getEquipmentByBeds(id:string){
         console.log('id', id);
-        const equipment=  await this.bedRepository.query(`select * from bed_equipment_medical_equipment where "bed_id"='${id['id']}';`);
         const tableEquipment = await this.bedRepository.query(`
         SELECT
             b.id,

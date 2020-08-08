@@ -1,6 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsNotEmpty, IsString, IsDate, IsEnum } from 'class-validator';
 import { ISexType } from './type-sex.enum';
+import { Pathology } from '../../pathology/pathology.entity';
 
 export class CreatePatientDTO {
 
@@ -111,5 +112,7 @@ export class CreatePatientDTO {
   @IsNotEmpty()
   @IsEnum(ISexType)
   sex:  ISexType;
+
+  pathologies: Pathology[];
 
 }

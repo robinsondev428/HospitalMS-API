@@ -28,6 +28,7 @@ export class PatientRepository extends Repository<Patient> {
       district,
       other_signs,
       sex,
+      pathologies,
     } = createPatientDTO;
 
     const patient = new Patient();
@@ -41,6 +42,7 @@ export class PatientRepository extends Repository<Patient> {
     patient.phone = phone;
     patient.sex = sex;
     patient.password = password;
+    patient.pathologies = pathologies;
     await patient.save();
 
     return patient;
