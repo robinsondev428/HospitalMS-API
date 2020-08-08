@@ -3,6 +3,7 @@ import { Controller, Get, Param, Post, Body, Patch, Delete, ValidationPipe, UseP
 import { ReservationService } from './reservation.service';
 import { ReservationDTO } from './dto/reservation.dto';
 import { Reservation } from './reservation.entity';
+import { CheckDTO } from './dto/check.dto';
 import { ApiParam } from '@nestjs/swagger';
 
 @Controller('reservation')
@@ -28,6 +29,11 @@ export class ReservationController {
   @Get('procedures/:id')
   getProcedureByPatient(@Param('id') dni): Promise<any[]> {
     return this.reservationService.getProcedureByReservation(dni);
+  }
+
+  @Get('/check/:num')
+  getAvailableBed(@Body() data:CheckDTO): Promise<any>{
+    return this.reservationService.checkAvailabilityOfBeds(data);
   }
   /**
    * Create a new reservation
