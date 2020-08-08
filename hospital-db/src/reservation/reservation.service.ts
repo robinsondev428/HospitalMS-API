@@ -58,17 +58,7 @@ export class ReservationService {
      */
     async getProcedureByReservation(id:string){
         console.log('id', id);
-        const tableProcedure = await this.reservationRepository.query(`
-        SELECT
-            r.id,
-            m.name
-        FROM
-            reservation r 
-        INNER JOIN reservation_procedures_medical_procedure p 
-            ON p.reservation_id = r.id 
-        INNER JOIN medical_procedure m 
-            ON p.medical_procedure_id = m.id
-        WHERE r.id='${id}'`)
+        const tableProcedure = await this.reservationRepository.query(`select * from get_reservation_procedures('${id}')`)
         console.log('equipment', tableProcedure);
         return tableProcedure;
     }
