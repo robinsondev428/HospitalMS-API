@@ -14,24 +14,5 @@ import { Reservation } from "src/reservation/reservation.entity";
  * Configuration of the postgres connection
  */
 export const typeOrmConfig: TypeOrmModuleOptions = {
-    type: 'postgres',
-    host: 'hospital-bd-2022.postgres.database.azure.com',
-    port: 5432,
-    username: 'orbeteam@hospital-bd-2022',
-    password: '-_T>"J#+4FeA',
-    database: 'hospitalDB',
-    entities: [
-        Bed,
-        Room,
-        MedicalEquipment,
-        Staff,
-        MedicalProcedure,
-        ClinicalRecord,
-        Address,
-        Pathology,
-        Patient,
-        Reservation,
-    ],
-    synchronize: true,
-    ssl: true
+    
 };
