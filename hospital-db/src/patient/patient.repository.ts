@@ -36,7 +36,6 @@ export class PatientRepository extends Repository<Patient> {
     patient.name = name;
     patient.lastname = lastname;
     patient.dob = dob;
-
     patient.address_ = await this.getAddress(province,canton,district);
     patient.other_signs = other_signs;
     patient.phone = phone;
@@ -44,7 +43,7 @@ export class PatientRepository extends Repository<Patient> {
     patient.password = password;
     patient.pathologies = pathologies;
     await patient.save();
-
+    console.log('paciente', patient);
     return patient;
   }
 

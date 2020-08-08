@@ -21,6 +21,7 @@ export class ClinicalRecordsService {
    */
   async getRecordByIdRaw(id: string): Promise<ClinicalRecord> {
     const record = await this.recordRepository.findOne(id);
+    console.log('found', record);
     if (!record) {
       const errorMessage = `Record with ID: "${id}" not found`;
       throw new NotFoundException(errorMessage);
@@ -75,13 +76,8 @@ export class ClinicalRecordsService {
     updateRecordDTO: UpdateClinicalRecordDTO,
   ): Promise<ClinicalRecord> {
     const record = await this.getRecordByIdRaw(recordId);
-    const { date, procedure_id, treatment } = updateRecordDTO;
-
-    record.date = date;
-    record.treatment = treatment;
-    record.procedure = await this.recordRepository.ExistsProcedure(
-      procedure_id,
-    ); // Set the new procedure to the record
+    const { treatment } = updateRecordDTO;
+    record.treatment = treatment;// Set the new procedure to the record
     await record.save();
 
     return record;

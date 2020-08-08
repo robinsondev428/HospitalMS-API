@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Controller, Get, Post, Body, Param } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, UsePipes, ValidationPipe } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiBody, ApiParam, ApiNotFoundResponse } from '@nestjs/swagger';
 import { PatientService } from './patient.service';
 import { PatientDTO } from './dto/patient.dto';
@@ -25,10 +25,9 @@ export class PatientController {
      */
     @Post('/login')
     login(
-        @Body('dni') dni: string,
-        @Body('password') password: string
-    ): Promise<Patient> {
-        return this.patientService.login(dni,password);
+        @Body() credentials: string): Promise<Patient> {
+        console.log('login', credentials['dni'],' pass ',credentials['password'])
+        return this.patientService.login(credentials['dni'], credentials['password']);
     }
 
     /**
@@ -39,6 +38,7 @@ export class PatientController {
     @ApiBody({ required: true, type: CreatePatientDTO })
     @ApiOperation({ summary: 'Permite agregar un nuevo paciente a la base de datos.' })
     @ApiResponse({ status: 201, type: PatientDTO })
+    @UsePipes(ValidationPipe)
     createPatient(@Body() createPatientDTO: CreatePatientDTO){
         return this.patientService.createPatient(createPatientDTO);
     }

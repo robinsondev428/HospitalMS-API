@@ -41,6 +41,7 @@ export class PatientService {
    * @param createPatientDTO data for the new patient
    */
   createPatient(createPatientDTO: CreatePatientDTO) {
+    console.log('create', createPatientDTO);
     return this.patientRepository.createPatient(createPatientDTO);
   }
   /**

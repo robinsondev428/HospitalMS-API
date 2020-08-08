@@ -56,7 +56,6 @@ export class CreatePatientDTO {
     description: 'Date of birth.',
   })
   @IsNotEmpty()
-  @IsDate()
   dob: Date;
 
   /**

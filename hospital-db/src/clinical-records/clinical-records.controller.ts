@@ -52,11 +52,10 @@ export class ClinicalRecordsController {
    */
   @ApiOperation({ summary: 'Edit the medical procedure of a clinical record' })
   @ApiResponse({ status: 200, type: ClinicalRecord })
-  @Patch('/:id/edit')
+  @Patch('/edit/:id')
   updateRecordProcedure(
     @Param('id') id: string,
-    @Body() updateRecordDTO: UpdateClinicalRecordDTO,
-  ) {
+    @Body() updateRecordDTO: UpdateClinicalRecordDTO,) {
     return this.clinicalRecordService.updateRecordProcedure(id, updateRecordDTO);
   }
   /**

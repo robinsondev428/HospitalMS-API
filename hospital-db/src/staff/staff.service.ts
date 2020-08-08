@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Staff } from './staff.entity';
 import { StaffRepository } from './staff.repository';
@@ -14,15 +14,6 @@ export class StaffService {
     @InjectRepository(Staff)
     private staffRepository: StaffRepository,
   ){}
-
-  /**
-   * 
-   * @param username 
-   * @param password 
-   */
-  async login (username: string,password: string): Promise<void> {
-    const staff = this.staffRepository.findOne()
-  }
   
   /**
    * get one member
@@ -93,6 +84,23 @@ export class StaffService {
 
     return staff;
   }
+  /**
+   * 
+   * @param dni 
+   * @param password 
+   */
+  async login(dni: string, password: string): Promise<Staff> {
+    const staff = await this.staffRepository.findOne({where:{'username':dni}});
+    if(!staff){
+      const errorMessage = 'Staff Not found';
+      throw new NotFoundException(errorMessage);
+    }
 
+    if(staff.password !== password){
+      const errorMessage = 'Incorrect Password';
+      throw new BadRequestException(errorMessage);
+    }
+    return staff;
+  }
 
 }

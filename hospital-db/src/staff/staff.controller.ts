@@ -57,4 +57,12 @@ export class StaffController {
   deleteStaff(@Param('dni') dni: string): void {
     this.staffService.deleteStaff(dni);
   }
+   /**
+     * Login
+     */
+    @Post('/login')
+    login( @Body() credentials: string): Promise<Staff> {
+        console.log('login', credentials['dni'],' pass ',credentials['password'])
+        return this.staffService.login(credentials['dni'], credentials['password']);
+    }
 }
