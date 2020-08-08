@@ -44,7 +44,7 @@ export class ReservationController {
    * @param updateStaffDTO data of the reservation
    */
   @Patch('/:id')
-  editStaff(@Param('id') dni: string,@Body() updateStaffDTO: ReservationDTO,
+  editStaff(@Param('id') dni: string,@Body() updateStaffDTO: object,
   ): Promise<Reservation> {
     return this.reservationService.updateReservation(updateStaffDTO,dni)
   }
