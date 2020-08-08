@@ -79,15 +79,14 @@ export class ReservationService {
      * @param data of the reservation
      * @param id of the reservation
      */
-    async updateReservation(data: ReservationDTO, id:string){
-        const {ArrivalDate, Procedures, PatientDni,} = data;
+    async updateReservation(data: object, id:string){
         const found = await this.reservationRepository.findOne(id);
         if(!found){
             throw new NotFoundException(`La reservation con el id ${id} no existe`);
         }
-        found.arrival_date = ArrivalDate;
-        found.procedures_ = Procedures;
-        found.patient_ = PatientDni;
+        found.arrival_date = data['ArrivalDate'];
+        found.procedures_ = data['Procedures'];
+        found.patient_ = data['PatientDni'];
 
         return await found.save();
     }
