@@ -36,7 +36,6 @@ export class ReservationDTO {
         description: 'Patients admission date.'
     })
     @IsNotEmpty()
-    @IsDate()
     ArrivalDate: Date;
 
     /**

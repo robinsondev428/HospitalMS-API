@@ -14,6 +14,7 @@ export class ReservationService {
      * @param data of a reservation
      */
     async createReservation(data: ReservationDTO){
+        console.log('data reser', data);
         return await this.reservationRepository.createReservation(data);
     }
     /**
@@ -21,6 +22,12 @@ export class ReservationService {
      */
     async getAll(){
         return await this.reservationRepository.find();
+    }
+    /**
+     * Get all the reservation
+     */
+    async getOneReservationByPatient(patientDni){
+        return await this.reservationRepository.query(`select * from reservation where patient_dni='${patientDni}'`);
     }
     /**
      * delete one reservation
@@ -61,7 +68,7 @@ export class ReservationService {
             ON p.reservation_id = r.id 
         INNER JOIN medical_procedure m 
             ON p.medical_procedure_id = m.id
-        where r.id='${id['id']}'`)
+        WHERE r.id='${id}'`)
         console.log('equipment', tableProcedure);
         return tableProcedure;
     }

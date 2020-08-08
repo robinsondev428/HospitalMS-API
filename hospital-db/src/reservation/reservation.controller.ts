@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Controller, Get, Param, Post, Body, Patch, Delete } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, Patch, Delete, ValidationPipe, UsePipes } from '@nestjs/common';
 import { ReservationService } from './reservation.service';
 import { ReservationDTO } from './dto/reservation.dto';
 import { Reservation } from './reservation.entity';
@@ -15,11 +15,26 @@ export class ReservationController {
   getAllReservation(): Promise<any[]> {
     return this.reservationService.getAll();
   }
+    /**
+   * Get One the reservations
+   */
+  @Get('/:id')
+  getOneReservation(@Param('id') dni): Promise<any[]> {
+    return this.reservationService.getOneReservationByPatient(dni);
+  }
+   /**
+   * Get the procedure of the reservation
+   */
+  @Get('procedures/:id')
+  getProcedureByPatient(@Param('id') dni): Promise<any[]> {
+    return this.reservationService.getProcedureByReservation(dni);
+  }
   /**
    * Create a new reservation
    * @param createStaffDTO data of the reservation
    */
   @Post()
+  @UsePipes(ValidationPipe)
   createReservation(@Body() data: ReservationDTO): Promise<Reservation> {
     return this.reservationService.createReservation(data);
   }
