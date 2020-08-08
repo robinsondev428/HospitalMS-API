@@ -29,17 +29,7 @@ export class BedsService {
      */
     async getEquipmentByBeds(id:string){
         console.log('id', id);
-        const tableEquipment = await this.bedRepository.query(`
-        SELECT
-            b.id,
-            m.name
-        FROM
-            bed b
-        INNER JOIN bed_equipment_medical_equipment p 
-            ON p.bed_id = b.id
-        INNER JOIN medical_equipment m 
-            ON p.medical_equipment_id = m.id
-        where b.id='${id['id']}'`)
+        const tableEquipment = await this.bedRepository.query(`select * from get_bed_equipment('${id}')`);
         console.log('equipment', tableEquipment);
         return tableEquipment;
     }

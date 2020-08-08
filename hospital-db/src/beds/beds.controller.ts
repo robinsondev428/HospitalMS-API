@@ -23,7 +23,7 @@ export class BedsController {
     @ApiParam({name:'id'})
     @ApiOperation({ summary: 'Obtener la información de las equipos de acuerdo al id de la cama' })
     @ApiResponse({ status: 200 })
-    getEquipmentByBed(@Param() idBed: string){
+    getEquipmentByBed(@Param('id') idBed: string){
         return this.bedService.getEquipmentByBeds(idBed);
     }
     /**
