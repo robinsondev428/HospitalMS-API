@@ -3,12 +3,17 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { ReservationRepository } from './reservation.repository';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ReservationDTO } from './dto/reservation.dto';
+import { CheckDTO } from './dto/check.dto';
+import { MedicalProcedure } from '../medical-procedure/medical-procedure.entity';
+import * as moment from 'moment';
 
 @Injectable()
 export class ReservationService {
+    
     constructor(
         @InjectRepository(ReservationRepository)
-        private reservationRepository: ReservationRepository    ){}
+        private reservationRepository: ReservationRepository,
+        ){}
     /**
      * Create a new Reservation
      * @param data of a reservation
@@ -23,6 +28,39 @@ export class ReservationService {
     async getAll(){
         return await this.reservationRepository.find();
     }
+    /**
+     * 
+     */
+    async checkAvailabilityOfBeds(data: CheckDTO) {
+        console.log(data);
+        const {dni, arrival_date, procedures} = data;
+
+        const departure_date = await this.calculateDepartureDate(arrival_date, procedures);
+        console.log(departure_date);
+        const beds = this.reservationRepository.query(`select * from hsp_get_available_beds('${dni}','${arrival_date}','${departure_date}')`);
+        return beds;
+    }
+
+    /**
+     * 
+     * @param arrival_date 
+     * @param procedures 
+     */
+    async calculateDepartureDate(arrival_date: string, procedures: MedicalProcedure[]) {
+        
+        let totalTime: number;
+
+        totalTime = 0;
+        
+        procedures.forEach(p => {
+            totalTime += p.time; 
+        });
+
+        const date:Date = await this.reservationRepository.query(`select * from hfx_calculate_departure_date('${arrival_date}',${totalTime})`);
+        
+        return moment(date[0].hfx_calculate_departure_date).format('yyyy-MM-d');
+    }
+
     /**
      * Get all the reservation
      */
