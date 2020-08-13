@@ -6,6 +6,7 @@ import { ReservationDTO } from './dto/reservation.dto';
 import { CheckDTO } from './dto/check.dto';
 import { MedicalProcedure } from '../medical-procedure/medical-procedure.entity';
 import * as moment from 'moment';
+import { Reservation } from 'src/reservation/reservation.entity';
 
 @Injectable()
 export class ReservationService {
@@ -79,14 +80,32 @@ export class ReservationService {
      * @param data of the reservation
      * @param id of the reservation
      */
-    async updateReservation(data: object, id:string){
+    async prepareReservation(data: object, id:string){
+        
+
+        await this.reservationRepository.query(`call delete_procedures('${id}')`);
+
         const found = await this.reservationRepository.findOne(id);
         if(!found){
             throw new NotFoundException(`La reservation con el id ${id} no existe`);
         }
+
+        found.arrival_date = data['ArrivalDate'];
+        found.procedures_ = [];
+
+        return await found.save();
+    }
+
+    async updateReservation(data:object, id: string) {
+        await this.prepareReservation(data,id);
+
+        const found = await this.reservationRepository.findOne(id);
+        if(!found){
+            throw new NotFoundException(`La reservation con el id ${id} no existe`);
+        }
+
         found.arrival_date = data['ArrivalDate'];
         found.procedures_ = data['Procedures'];
-        found.patient_ = data['PatientDni'];
 
         return await found.save();
     }

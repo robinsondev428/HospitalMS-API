@@ -31,7 +31,7 @@ export class ReservationController {
     return this.reservationService.getProcedureByReservation(dni);
   }
 
-  @Get('/check/:num')
+  @Post('/check/:num')
   getAvailableBed(@Body() data:CheckDTO): Promise<any>{
     return this.reservationService.checkAvailabilityOfBeds(data);
   }
